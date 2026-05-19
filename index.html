@@ -224,6 +224,23 @@ a{color:inherit;text-decoration:none}
 /* ── ABOUT / COMPANY CARDS ──────────────────────────────── */
 .about-wrap{display:none}
 .about-wrap.active{display:block}
+
+.about-intro{
+  background:#fff;
+  border-left:4px solid var(--brand);
+  border-radius:var(--r);
+  padding:24px;
+  margin-bottom:20px;
+  box-shadow:var(--shadow);
+}
+.about-intro-title{
+  font-size:20px;font-weight:700;color:var(--t1);
+  margin-bottom:6px;line-height:1.25;
+}
+.about-intro-sub{
+  font-size:14px;color:var(--t3);line-height:1.55;
+}
+
 .companies-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -236,18 +253,20 @@ a{color:inherit;text-decoration:none}
 }
 .co-card::before{
   content:'';position:absolute;
-  top:0;left:0;right:0;height:4px;
-  background:var(--brand);
+  top:0;left:0;right:0;height:3px;
+  background:var(--co-color, var(--brand));
 }
 .co-logo{
-  width:44px;height:44px;border-radius:10px;
-  background:var(--brand-lt);color:var(--brand);
+  width:44px;height:44px;border-radius:50%;
+  background:var(--co-bg, var(--brand-lt));
+  color:var(--co-color, var(--brand));
   display:flex;align-items:center;justify-content:center;
   font-size:11px;font-weight:700;letter-spacing:-.01em;
   margin-bottom:14px;flex-shrink:0;
 }
-.co-name{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:3px;line-height:1.3}
-.co-type{font-size:12px;font-style:italic;color:var(--t3);margin-bottom:10px}
+.co-name{font-size:16px;font-weight:700;color:var(--t1);margin-bottom:3px;line-height:1.3}
+.co-type{font-size:12px;font-style:italic;color:var(--t3);margin-bottom:0}
+.co-divider{height:1px;background:var(--border);margin:10px 0}
 .co-desc{font-size:13px;color:var(--t2);line-height:1.55}
 
 /* ── FOOTER ─────────────────────────────────────────────── */
@@ -301,7 +320,7 @@ a{color:inherit;text-decoration:none}
   .sec-icon{width:22px;height:22px;font-size:11px}
   .card-name{font-size:12px;font-weight:600}
   .card-role{font-size:10px;-webkit-line-clamp:2;line-clamp:2}
-  .card-desc{display:none}
+
   .card-body{padding:8px 8px 8px 7px;gap:1px}
   .initials{font-size:18px}
 }
@@ -336,6 +355,11 @@ a{color:inherit;text-decoration:none}
 <main class="main" id="app"></main>
 
 <div class="main about-wrap" id="about">
+  <div class="about-intro">
+    <div class="about-intro-title">Группа компаний RAHMAT</div>
+    <div class="about-intro-sub">Объединяет компании в сфере платёжных сервисов,
+    IT-инфраструктуры, финтех-продуктов и микрофинансирования</div>
+  </div>
   <div class="companies-grid" id="co-grid"></div>
 </div>
 
@@ -369,7 +393,7 @@ const E = [
     photoFile:'Marking Yevgeniy.png' },
   { name:'Sidorov Andrey',
     role:'Директор по IT ООО «FINTECH PLATFORMS»',
-    desc:'Сопровождение серверной архитектуры, внутренних ИТ систем',
+    desc:'Сопровождение серверной архитектуры, внутренних ИТ систем (Jira и др.)',
     sec:'it', level:'it', ini:'СА',
     photoFile:'Sidorov Andrey.png' },
   { name:'Orlovskiy Aleksey',
@@ -386,24 +410,24 @@ const E = [
   /* ФИНАНСЫ И КРЕДИТНЫЕ ПРОДУКТЫ */
   { name:'Shoikromov Shorasul',
     role:'Финансовый директор ООО «RAHMAT TECH» / Директор ООО МФО «MULTIFINANCE»',
-    desc:'Финансовое управление группы компаний и руководство МФО «MULTIFINANCE»',
+    desc:'Финансовое управление группы компаний и руководство деятельностью ООО МФО «MULTIFINANCE»',
     sec:'finance', level:'finance', ini:'ШШ',
     photoFile:'Shoikromov Shorasul.png' },
   { name:'Aglyamova Elvira',
     role:'Начальник отдела развития кредитных продуктов ООО «RAHMAT TECH»',
-    desc:'Координация IT проектов по кредитным продуктам МФО «MULTIFINANCE»',
+    desc:'Координация ИТ проектов по кредитным продуктам ООО МФО «MULTIFINANCE»',
     sec:'finance', level:'finance', ini:'АЭ',
     photoFile:'Aglyamova Elvira.png' },
 
   /* КОНТРОЛЬ · ЮРИДИЧЕСКИЙ БЛОК · HR */
   { name:'Zakirov Rustam',
     role:'Начальник юридического отдела',
-    desc:'Юридические вопросы, договорная база и координация HR',
+    desc:'Юридические вопросы, договорная база и координация отдела по работе с персоналом',
     sec:'control', level:'control', ini:'ЗР',
     photoFile:'Zakirov Rustam.png' },
   { name:'Nurkhanov Aziz',
     role:'Менеджер по внутреннему контролю АО «MULTICARD PAYMENT»',
-    desc:'AML/CFT и контроль соблюдения требований законодательства',
+    desc:'Вопросы AML/CFT и контроль соблюдения требований законодательства по внутреннему контролю',
     sec:'control', level:'control', ini:'НА',
     photoFile:'Nurkhanov Aziz.png' },
   { name:'Yakubov Muslim',
@@ -418,7 +442,7 @@ const E = [
     photoFile:'Makhkamov Nodir.jpeg' },
   { name:'Maksudova Dilnoza',
     role:'Специалист по документообороту',
-    desc:'Оформление и учёт писем, приказов, договоров, работа в Directum',
+    desc:'Оформление и учёт писем, приказов, договоров, работа в Directum и других ЭДО',
     sec:'control', level:'control', ini:'ДМ',
     photoFile:'Maksudova Dilnoza.jpg' },
 
@@ -452,7 +476,7 @@ const E = [
     photoFile:'Manyurov Timur.png' },
   { name:'Burxanov Timur',
     role:'Начальник отдела развития кассовых решений',
-    desc:'Виртуальная касса, онлайн-ККМ',
+    desc:'Развитие и сопровождение виртуальной кассы, онлайн-ККМ',
     sec:'products', level:'products', ini:'БТ',
     photoFile:'Burxanov Timur.png' },
   { name:'Maxmudov Abdusamadxon',
@@ -479,7 +503,7 @@ const E = [
     photoFile:'Tursunov Botir Baxtiyorovich.png' },
   { name:'Maletina Karina',
     role:'Офис-менеджер',
-    desc:'Встреча гостей, сканирование документов, организационная поддержка',
+    desc:'Встреча гостей, сканирование и копирование документов, организационная поддержка офиса',
     sec:'admin', level:'admin', ini:'МК',
     photoFile:'Maletina Karina.png' },
 ];
@@ -487,14 +511,19 @@ const E = [
 /* ── COMPANIES ──────────────────────────────────────────── */
 const COMPANIES = [
   { abbr:'MC', name:'АО «MULTICARD PAYMENT»', type:'Платёжная организация',
+    color:'#E8392A', bg:'#FFF0EE',
     desc:'Осуществляет деятельность в сфере платёжных сервисов, приёма и обработки платежей, взаимодействия с банками, партнёрами и мерчантами.' },
   { abbr:'RT', name:'ООО «RAHMAT TECH»', type:'IT-компания группы',
+    color:'#2563EB', bg:'#EEF2FF',
     desc:'Обеспечивает разработку, внедрение, сопровождение и развитие IT-процессов и программных решений для АО «MULTICARD PAYMENT».' },
   { abbr:'FP', name:'ООО «FINTECH PLATFORMS»', type:'Инфраструктурная компания группы',
+    color:'#059669', bg:'#ECFDF5',
     desc:'Обслуживает серверную инфраструктуру, необходимую для стабильной работы IT-систем и сервисов АО «MULTICARD PAYMENT».' },
   { abbr:'MF', name:'ООО МФО «MULTIFINANCE»', type:'Микрофинансовая организация',
+    color:'#7C3AED', bg:'#F5F3FF',
     desc:'Развивает кредитные и микрофинансовые продукты в рамках группы компаний RAHMAT.' },
   { abbr:'MB', name:'ООО «MULTIBROKER»', type:'IT-компания группы',
+    color:'#D97706', bg:'#FFFBEB',
     desc:'Развивает инвестиционный сервис Jett.uz' },
 ];
 
@@ -589,10 +618,11 @@ function sec(label, icon, lv, emps, gridCls) {
 /* ── RENDER COMPANIES ───────────────────────────────────── */
 function renderCompanies() {
   document.getElementById('co-grid').innerHTML = COMPANIES.map(co =>
-    `<div class="co-card">
+    `<div class="co-card" style="--co-color:${co.color};--co-bg:${co.bg}">
       <div class="co-logo">${co.abbr}</div>
       <div class="co-name">${co.name}</div>
       <div class="co-type">${co.type}</div>
+      <div class="co-divider"></div>
       <div class="co-desc">${co.desc}</div>
     </div>`
   ).join('');
