@@ -52,21 +52,17 @@ a{color:inherit;text-decoration:none}
 }
 .logo-brand{
   font-size:22px;font-weight:700;
-  color:var(--brand);letter-spacing:-.03em;
-  line-height:1;
+  color:var(--brand);letter-spacing:-.03em;line-height:1;
 }
 .logo-sep{color:var(--border);margin:0 2px;font-weight:300}
-.logo-sub{
-  font-size:13px;font-weight:400;color:var(--t3);
-  white-space:nowrap;
-}
+.logo-sub{font-size:13px;font-weight:400;color:var(--t3);white-space:nowrap}
 
-/* ── SEARCH ─────────────────────────────────────────────── */
+/* ── SEARCH + TABS BAR ──────────────────────────────────── */
 .srch-bar{
   position:sticky;top:0;z-index:200;
   background:var(--card);
   border-bottom:1px solid var(--border);
-  padding:10px 24px;
+  padding:10px 24px 0;
   box-shadow:0 1px 4px rgba(0,0,0,.04);
 }
 .srch-inner{
@@ -97,16 +93,30 @@ a{color:inherit;text-decoration:none}
   font-size:12px;color:var(--t3);pointer-events:none;
 }
 
+/* ── TABS ───────────────────────────────────────────────── */
+.tabs-inner{
+  max-width:1200px;margin:8px auto 0;
+  display:flex;gap:4px;
+}
+.tab{
+  padding:7px 16px;
+  border-radius:8px 8px 0 0;
+  border:none;cursor:pointer;
+  font-family:var(--font);font-size:13px;font-weight:500;
+  background:transparent;color:var(--t3);
+  transition:background .15s,color .15s;
+  outline:none;white-space:nowrap;
+}
+.tab.tab-active{background:var(--brand);color:#fff}
+.tab:not(.tab-active):hover{color:var(--t1);background:var(--bg)}
+
 /* ── LAYOUT ─────────────────────────────────────────────── */
 .main{max-width:1200px;margin:0 auto;padding:28px 24px 80px}
 
 /* ── SECTION ────────────────────────────────────────────── */
 .sec{margin-bottom:36px}
 .sec:last-child{margin-bottom:0}
-.sec-hdr{
-  display:flex;align-items:center;gap:8px;
-  margin-bottom:14px;
-}
+.sec-hdr{display:flex;align-items:center;gap:8px;margin-bottom:14px}
 .sec-icon{
   width:26px;height:26px;border-radius:7px;
   display:flex;align-items:center;justify-content:center;
@@ -114,21 +124,17 @@ a{color:inherit;text-decoration:none}
 }
 .sec-label{
   font-size:11px;font-weight:600;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--t2);
-  white-space:nowrap;
+  text-transform:uppercase;color:var(--t2);white-space:nowrap;
 }
 .sec-count{
   font-size:11px;color:var(--t3);
-  background:var(--bg);
-  border:1px solid var(--border);
+  background:var(--bg);border:1px solid var(--border);
   border-radius:100px;padding:1px 7px;
 }
 .sec-line{flex:1;height:1px;background:var(--border)}
 
 /* ── GRIDS ──────────────────────────────────────────────── */
 .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
-
-/* Strategic: first card spans full row on desktop */
 .gs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
 
 /* ── CARD ───────────────────────────────────────────────── */
@@ -136,20 +142,15 @@ a{color:inherit;text-decoration:none}
   background:var(--card);
   border:1px solid var(--border);
   border-radius:var(--r);
-  overflow:hidden;cursor:pointer;
+  overflow:hidden;
   display:flex;flex-direction:row;
   min-height:var(--ch);
   position:relative;
   box-shadow:var(--shadow);
   animation:fadeUp .35s var(--ease) both;
-  transition:box-shadow .2s var(--ease),border-color .2s var(--ease),transform .2s var(--ease);
+  transition:box-shadow .2s var(--ease),border-color .2s var(--ease);
 }
-.card:hover{
-  box-shadow:var(--shadow-h);
-  border-color:var(--border-h);
-  transform:translateY(-2px);
-}
-/* coloured top strip */
+.card:hover{box-shadow:var(--shadow-h);border-color:var(--border-h)}
 .card::before{
   content:'';position:absolute;
   top:0;left:0;right:0;height:3px;
@@ -162,6 +163,14 @@ a{color:inherit;text-decoration:none}
   width:var(--pw);flex-shrink:0;
   position:relative;overflow:hidden;
   background:var(--strip-bg,var(--brand-lt));
+}
+/* right-to-left fade into card background */
+.card-photo::after{
+  content:'';position:absolute;
+  top:0;right:0;
+  width:30%;height:100%;
+  background:linear-gradient(to left, var(--card) 0%, transparent 100%);
+  z-index:2;pointer-events:none;
 }
 .card-photo img{
   position:absolute;inset:0;
@@ -197,46 +206,49 @@ a{color:inherit;text-decoration:none}
 }
 .card-role{
   font-size:11.5px;font-weight:400;color:var(--t2);line-height:1.35;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.card-dept{
-  font-size:10.5px;color:var(--t3);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-/* info block: desc + hint — visible by default */
-.card-info{
-  flex:1;display:flex;flex-direction:column;
-  gap:2px;margin-top:4px;min-height:0;overflow:hidden;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;
+  line-clamp:3;overflow:hidden;
 }
 .card-desc{
   font-size:10.5px;color:var(--t3);line-height:1.45;
-  flex:1;overflow:hidden;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  line-clamp:2;overflow:hidden;margin-top:4px;
 }
-.card-hint{font-size:10px;color:var(--t3);margin-top:auto}
-/* contacts — replaces card-info on click */
-.card-contacts{
-  flex:1;display:none;flex-direction:column;
-  gap:3px;margin-top:4px;min-height:0;
-  padding-top:8px;border-top:1px solid var(--border);
-  animation:fadeIn .15s ease;
-}
-.card-contacts.open{display:flex}
-.clink{
-  display:flex;align-items:center;gap:6px;
-  font-size:11.5px;color:var(--t2);
-  padding:4px 6px;border-radius:6px;
-  transition:background .12s,color .12s;
-}
-.clink:hover{background:var(--bg);color:var(--t1)}
-.clink svg{flex-shrink:0;color:var(--t3)}
-.cno{font-size:11px;color:var(--t3);font-style:italic;padding:2px 6px}
 
 /* ── EMPTY ──────────────────────────────────────────────── */
 .empty{
   grid-column:1/-1;text-align:center;
   padding:64px 24px;color:var(--t3);font-size:14px;
 }
+
+/* ── ABOUT / COMPANY CARDS ──────────────────────────────── */
+.about-wrap{display:none}
+.about-wrap.active{display:block}
+.companies-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+.co-card{
+  background:#fff;border:1px solid var(--border);
+  border-radius:var(--r);box-shadow:var(--shadow);
+  overflow:hidden;position:relative;padding:22px 20px 24px;
+}
+.co-card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:4px;
+  background:var(--brand);
+}
+.co-logo{
+  width:44px;height:44px;border-radius:10px;
+  background:var(--brand-lt);color:var(--brand);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;letter-spacing:-.01em;
+  margin-bottom:14px;flex-shrink:0;
+}
+.co-name{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:3px;line-height:1.3}
+.co-type{font-size:12px;font-style:italic;color:var(--t3);margin-bottom:10px}
+.co-desc{font-size:13px;color:var(--t2);line-height:1.55}
 
 /* ── FOOTER ─────────────────────────────────────────────── */
 .ftr{
@@ -251,42 +263,47 @@ a{color:inherit;text-decoration:none}
   from{opacity:0;transform:translateY(12px)}
   to{opacity:1;transform:translateY(0)}
 }
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 /* ── RESPONSIVE ─────────────────────────────────────────── */
 
-/* desktop >1024: strategic first card full-width */
-@media(min-width:1025px){
+/* Desktop ≥ 769px */
+@media(min-width:769px){
+  :root{--ch:155px}
   .gs .card:first-child{grid-column:1/-1}
 }
 
-/* tablet 480–1024: 2 cols everywhere */
-@media(max-width:1024px){
+/* Tablet 480–768px */
+@media(min-width:480px) and (max-width:768px){
   :root{--ch:130px}
   .card-name{font-size:13px}
+  .card-desc{font-size:10px}
 }
 
-/* mobile <480: 1 col, 120px cards */
-@media(max-width:480px){
-  :root{--ch:120px;--pw:33%}
-  .g2,.gs{grid-template-columns:1fr}
-  .main{padding:16px 16px 60px}
-  .hdr{padding:12px 16px}
-  .logo-brand{font-size:18px}
+/* Mobile < 480px */
+@media(max-width:479px){
+  :root{--ch:115px;--pw:33%}
+  .g2,.gs,.companies-grid{grid-template-columns:1fr}
+  .main{padding:16px 12px 60px}
+  .hdr{padding:12px 12px}
   .logo-sub{display:none}
-  .srch-bar{padding:8px 16px}
-  .srch-input{min-height:48px;font-size:15px;padding:12px 64px 12px 40px}
-  .sec{margin-bottom:24px}
-  .sec-hdr{margin-bottom:10px}
-  .sec-label{font-size:10px}
-  .card-name{font-size:12px}
-  .card-role{font-size:10.5px}
-  .card-dept{font-size:10px}
-  .card-badge{font-size:8px}
-  .card-body{padding:10px 10px 10px 9px;gap:2px}
-  .initials{font-size:20px}
-  .clink{font-size:11px;padding:5px 5px}
-  .card-desc{-webkit-line-clamp:1}
+  .srch-bar{padding:8px 12px 0}
+  .srch-input{min-height:48px;font-size:15px;padding:0 12px 0 40px}
+  .tabs-inner{gap:0}
+  .tab{
+    flex:1;height:44px;
+    border-radius:8px 8px 0 0;
+    font-size:12px;padding:0 6px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .sec{margin-bottom:20px}
+  .sec-hdr{margin-bottom:8px}
+  .sec-label{font-size:11px}
+  .sec-icon{width:22px;height:22px;font-size:11px}
+  .card-name{font-size:12px;font-weight:600}
+  .card-role{font-size:10px;-webkit-line-clamp:2;line-clamp:2}
+  .card-desc{display:none}
+  .card-body{padding:8px 8px 8px 7px;gap:1px}
+  .initials{font-size:18px}
 }
 </style>
 </head>
@@ -301,7 +318,7 @@ a{color:inherit;text-decoration:none}
 </header>
 
 <div class="srch-bar">
-  <div class="srch-inner">
+  <div class="srch-inner" id="srch-row">
     <span class="srch-ico">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
     </span>
@@ -310,9 +327,17 @@ a{color:inherit;text-decoration:none}
       autocomplete="off" spellcheck="false">
     <span class="srch-badge" id="srch-badge"></span>
   </div>
+  <div class="tabs-inner">
+    <button class="tab tab-active" data-tab="org" onclick="switchTab('org')">Организационная структура</button>
+    <button class="tab" data-tab="about" onclick="switchTab('about')">О компании</button>
+  </div>
 </div>
 
 <main class="main" id="app"></main>
+
+<div class="main about-wrap" id="about">
+  <div class="companies-grid" id="co-grid"></div>
+</div>
 
 <footer class="ftr">Rahmat · Организационная структура · <span id="yr"></span></footer>
 
@@ -320,90 +345,157 @@ a{color:inherit;text-decoration:none}
 /* ── EMPLOYEES ──────────────────────────────────────────── */
 const E = [
   /* СТРАТЕГИЧЕСКОЕ УПРАВЛЕНИЕ */
-  { id:'idiyev',    name:'Idiyev Ilxom Aminovich', role:'Директор Rahmat Tech', dept:'Председатель НС Multicard',
-    level:'strategic', sec:'strategic', photo:'photos/Idiyev Ilxom Aminovich.png', photoStyle:'object-fit:contain;object-position:center center', photoBg:'#F0F0F0', ini:'ИИ',
-    tg:'idv2601', ph:'+998 90 990 39 29', desc:'Стратегическое развитие группы компаний, координация ключевых направлений' },
-  { id:'mutalov',   name:'Mutalov Avaz', role:'Генеральный директор Multicard', dept:'',
-    level:'strategic', sec:'strategic', photo:'photos/Mutalov Avaz.png', ini:'МА',
-    tg:null, ph:null, desc:'Общее руководство Multicard, управленческие решения' },
-  { id:'bozorov',   name:'Bozorov Alisher', role:'Консультант директора по финансам', dept:'Член НС Multicard',
-    level:'strategic', sec:'strategic', photo:'photos/Bozorov Alisher.png', ini:'БА',
-    tg:null, ph:null, desc:'Финансовые консультации, финансовое планирование' },
+  { name:'Idiyev Ilxom Aminovich',
+    role:'Директор ООО «RAHMAT TECH» / Председатель Набсовета АО «MULTICARD PAYMENT»',
+    desc:'Стратегическое развитие и общее управление группы компаний',
+    sec:'strategic', level:'strategic', ini:'ИИ',
+    photoFile:'Idiyev Ilxom Aminovich.png', posOverride:'center center', photoContain:true, photoBg:'#f5f5f5' },
+  { name:'Mutalov Avaz',
+    role:'Генеральный директор АО «MULTICARD PAYMENT»',
+    desc:'Управление АО «MULTICARD PAYMENT»',
+    sec:'strategic', level:'strategic', ini:'МА',
+    photoFile:'Mutalov Avaz.png' },
+  { name:'Bozorov Alisher',
+    role:'Консультант директора по финансовым вопросам / Член Набсовета АО «MULTICARD PAYMENT»',
+    desc:'Финансовое планирование группы компаний',
+    sec:'strategic', level:'strategic', ini:'БА',
+    photoFile:'Bozorov Alisher.png' },
 
   /* IT · ТЕХНИЧЕСКИЙ БЛОК · ИБ */
-  { id:'marking',   name:'Marking Yevgeniy', role:'Консультант директора по IT', dept:'',
-    level:'it', sec:'it', photo:'photos/Marking Yevgeniy.png', ini:'МЕ',
-    tg:'em85g', ph:null, desc:'Общее руководство техническим блоком, координация IT-направлений' },
-  { id:'sidorov',   name:'Sidorov Andrey', role:'Директор по IT', dept:'',
-    level:'it', sec:'it', photo:'photos/Sidorov Andrey.png', ini:'СА',
-    tg:null, ph:null, desc:'Развитие IT-инфраструктуры, стабильность систем' },
-  { id:'orlovskiy', name:'Orlovskiy Aleksey', role:'Технический директор', dept:'',
-    level:'it', sec:'it', photo:'photos/Orlovskiy Aleksey.png', ini:'ОА',
-    tg:'OrlovskiyAlekseyUZ', ph:'+998 50 505 23 31', desc:'Руководство разработкой, координация технических задач' },
-  { id:'muminov',   name:'Muminov Dmitriy', role:'Директор по информационной безопасности', dept:'',
-    level:'it', sec:'it', photo:null, ini:'МД',
-    tg:null, ph:null, desc:'ИБ, защита данных, контроль IT-рисков' },
+  { name:'Marking Yevgeniy',
+    role:'Консультант директора ООО «RAHMAT TECH» по IT',
+    desc:'Общее руководство и координация технического блока группы компаний',
+    sec:'it', level:'it', ini:'МЕ',
+    photoFile:'Marking Yevgeniy.png' },
+  { name:'Sidorov Andrey',
+    role:'Директор по IT ООО «FINTECH PLATFORMS»',
+    desc:'Сопровождение серверной архитектуры, внутренних ИТ систем',
+    sec:'it', level:'it', ini:'СА',
+    photoFile:'Sidorov Andrey.png' },
+  { name:'Orlovskiy Aleksey',
+    role:'Технический директор ООО «RAHMAT TECH»',
+    desc:'Руководство техническим отделом ООО «RAHMAT TECH»',
+    sec:'it', level:'it', ini:'ОА',
+    photoFile:'Orlovskiy Aleksey.png' },
+  { name:'Muminov Dmitriy',
+    role:'Директор по информационной безопасности ООО «RAHMAT TECH»',
+    desc:'Информационная безопасность, защита данных, контроль доступов',
+    sec:'it', level:'it', ini:'МД',
+    photoFile:null },
 
   /* ФИНАНСЫ И КРЕДИТНЫЕ ПРОДУКТЫ */
-  { id:'shoikromov', name:'Shoikromov Shorasul', role:'Финансовый директор', dept:'Директор МФО Multifinance',
-    level:'finance', sec:'finance', photo:'photos/Shoikromov Shorasul.png', ini:'ШШ',
-    tg:null, ph:'+998 90 933 77 79', desc:'Финансовое управление, планирование, руководство МФО Multifinance' },
-  { id:'aglyamova',  name:'Aglyamova Elvira', role:'Начальник отдела кредитных продуктов', dept:'',
-    level:'finance', sec:'finance', photo:'photos/Aglyamova Elvira.png', ini:'АЭ',
-    tg:'Elya_Ag', ph:'+998 99 872 40 90', desc:'Развитие кредитных продуктов, координация с МКО Multifinance' },
+  { name:'Shoikromov Shorasul',
+    role:'Финансовый директор ООО «RAHMAT TECH» / Директор ООО МФО «MULTIFINANCE»',
+    desc:'Финансовое управление группы компаний и руководство МФО «MULTIFINANCE»',
+    sec:'finance', level:'finance', ini:'ШШ',
+    photoFile:'Shoikromov Shorasul.png' },
+  { name:'Aglyamova Elvira',
+    role:'Начальник отдела развития кредитных продуктов ООО «RAHMAT TECH»',
+    desc:'Координация IT проектов по кредитным продуктам МФО «MULTIFINANCE»',
+    sec:'finance', level:'finance', ini:'АЭ',
+    photoFile:'Aglyamova Elvira.png' },
 
   /* КОНТРОЛЬ · ЮРИДИЧЕСКИЙ БЛОК · HR */
-  { id:'zakirov',   name:'Zakirov Rustam', role:'Начальник юридического отдела', dept:'',
-    level:'control', sec:'control', photo:'photos/Zakirov Rustam.png', ini:'ЗР',
-    tg:'zakirov_r', ph:'+998 90 982 23 11', desc:'Договорная работа, трудовые вопросы, правовая поддержка' },
-  { id:'nurkhanov', name:'Nurkhanov Aziz', role:'Менеджер по внутреннему контролю', dept:'AML/CFT',
-    level:'control', sec:'control', photo:'photos/Nurkhanov Aziz.png', ini:'НА',
-    tg:null, ph:null, desc:'AML/CFT, внутренний контроль, compliance' },
-  { id:'yakubov',   name:'Yakubov Muslim', role:'Специалист по кадровому администрированию', dept:'',
-    level:'control', sec:'control', photo:'photos/Yakubov Muslim.jpg', ini:'ЯМ',
-    tg:null, ph:null, desc:'Приём и увольнение, оформление отпусков, кадровый учёт' },
-  { id:'makhkamov', name:'Makhkamov Nodir', role:'IT-рекрутер', dept:'',
-    level:'control', sec:'control', photo:'photos/Makhkamov Nodir.jpeg', ini:'МН',
-    tg:'nodirmain', ph:null, desc:'Подбор IT-специалистов, сопровождение кандидатов' },
-  { id:'maksudova', name:'Maksudova Dilnoza', role:'Специалист по документообороту', dept:'',
-    level:'control', sec:'control', photo:'photos/Maksudova Dilnoza.jpg', ini:'ДМ',
-    tg:'dilnoza220500', ph:null, desc:'Оформление и учёт писем, приказов, договоров' },
+  { name:'Zakirov Rustam',
+    role:'Начальник юридического отдела',
+    desc:'Юридические вопросы, договорная база и координация HR',
+    sec:'control', level:'control', ini:'ЗР',
+    photoFile:'Zakirov Rustam.png' },
+  { name:'Nurkhanov Aziz',
+    role:'Менеджер по внутреннему контролю АО «MULTICARD PAYMENT»',
+    desc:'AML/CFT и контроль соблюдения требований законодательства',
+    sec:'control', level:'control', ini:'НА',
+    photoFile:'Nurkhanov Aziz.png' },
+  { name:'Yakubov Muslim',
+    role:'Специалист по кадровому администрированию',
+    desc:'Приём и увольнение, оформление отпусков, кадровый учёт',
+    sec:'control', level:'control', ini:'ЯМ',
+    photoFile:'Yakubov Muslim.jpg' },
+  { name:'Makhkamov Nodir',
+    role:'IT-рекрутер',
+    desc:'Подбор IT-специалистов и сопровождение новых работников при найме',
+    sec:'control', level:'control', ini:'МН',
+    photoFile:'Makhkamov Nodir.jpeg' },
+  { name:'Maksudova Dilnoza',
+    role:'Специалист по документообороту',
+    desc:'Оформление и учёт писем, приказов, договоров, работа в Directum',
+    sec:'control', level:'control', ini:'ДМ',
+    photoFile:'Maksudova Dilnoza.jpg' },
 
   /* КОММЕРЦИЯ · ПРОДАЖИ · ОПЕРАЦИОННЫЙ БЛОК */
-  { id:'veksler',  name:'Veksler Viktor', role:'Консультант по кассовому направлению', dept:'',
-    level:'commerce', sec:'commerce', photo:'photos/Veksler Viktor.png', ini:'ВВ',
-    tg:'viktor_veksler', ph:'+998 90 370 92 72', desc:'Координация коммерческого и операционного блока, продаж' },
-  { id:'zinovev',  name:'Zinovev Konstantin', role:'Начальник операционного отдела', dept:'',
-    level:'commerce', sec:'commerce', photo:'photos/Zinovev Konstantin.png', ini:'ЗК',
-    tg:'konstantinZ1981', ph:'+998 91 791 22 88', desc:'Поддержка и подключение POS-терминалов, операционная работа' },
-  { id:'pazilov',  name:'Pazilov Sardor', role:'Начальник отдела маркетинга', dept:'',
-    level:'commerce', sec:'commerce', photo:'photos/Pazilov Sardor.png', ini:'ПС',
-    tg:'arkenakasaki', ph:'+998 91 130 03 66', desc:'Маркетинговая стратегия, продвижение продуктов, бренд' },
+  { name:'Veksler Viktor',
+    role:'Консультант директора по кассовому направлению',
+    desc:'Координация коммерческого и операционного блока, отдела продаж',
+    sec:'commerce', level:'commerce', ini:'ВВ',
+    photoFile:'Veksler Viktor.png' },
+  { name:'Zinoviev Konstantin',
+    role:'Начальник операционного отдела',
+    desc:'Поддержка и подключение POS-терминалов',
+    sec:'commerce', level:'commerce', ini:'ЗК',
+    photoFile:'Zinovev Konstantin.png' },
+  { name:'Pazilov Sardor',
+    role:'Начальник отдела маркетинга',
+    desc:'Маркетинговая стратегия, продвижение продуктов, бренд',
+    sec:'commerce', level:'commerce', ini:'ПС',
+    photoFile:'Pazilov Sardor.png' },
 
   /* ПРОДУКТОВЫЕ НАПРАВЛЕНИЯ */
-  { id:'nasirov',     name:'Nasirov Baxtiyor', role:'Начальник отдела Multidriver', dept:'',
-    level:'products', sec:'products', photo:'photos/Nasirov Baxtiyor.png', ini:'НБ',
-    tg:null, ph:null, desc:'Развитие Multidriver, партнёрства с CI Taxi, Yandex Go, Uklon' },
-  { id:'manyurov',    name:'Manyurov Timur', role:'Начальник отдела Horeca', dept:'',
-    level:'products', sec:'products', photo:'photos/Manyurov Timur.png', ini:'МТ',
-    tg:'Sk8racer', ph:'+998 20 007 85 75', desc:'Horeca, Rahmat Rest, агрегация доставки, iiko, Clouzook' },
-  { id:'burxanov',    name:'Burxanov Timur', role:'Начальник отдела кассовых решений', dept:'',
-    level:'products', sec:'products', photo:'photos/Burxanov Timur.png', ini:'БТ',
-    tg:'ne_privlekatelnyy', ph:'+998 90 560 14 49', desc:'Кассовые решения, онлайн-ККМ, фискализация' },
-  { id:'maxmudov',    name:'Maxmudov Abdusamadxon', role:'Начальник отдела эквайринга', dept:'',
-    level:'products', sec:'products', photo:'photos/Maxmudov Abdusamadxon.png', ini:'МА',
-    tg:null, ph:null, desc:'Развитие эквайринга, подключение партнёров' },
-  { id:'bahriddinov', name:'Bahriddinov Humoyun', role:'Продуктолог', dept:'',
-    level:'products', sec:'products', photo:'photos/Bahriddinov Humoyun.png', ini:'БХ',
-    tg:'HB9884114', ph:null, desc:'Работа с банками и крупными партнёрами, продуктовые требования' },
+  { name:'Nasirov Baxtiyor',
+    role:'Начальник отдела Multidriver',
+    desc:'Развитие Multidriver, партнёрства с WB Taxi, Yandex Go, Uklon',
+    sec:'products', level:'products', ini:'НБ',
+    photoFile:'Nasirov Baxtiyor.png' },
+  { name:'Manyurov Timur',
+    role:'Начальник отдела Horeca',
+    desc:'Horeca, Rahmat Rest, агрегация доставок, iiko, R-keeper',
+    sec:'products', level:'products', ini:'МТ',
+    photoFile:'Manyurov Timur.png' },
+  { name:'Burxanov Timur',
+    role:'Начальник отдела развития кассовых решений',
+    desc:'Виртуальная касса, онлайн-ККМ',
+    sec:'products', level:'products', ini:'БТ',
+    photoFile:'Burxanov Timur.png' },
+  { name:'Maxmudov Abdusamadxon',
+    role:'Начальник отдела развития эквайринга',
+    desc:'Развитие интернет-эквайринга, подключение партнёров',
+    sec:'products', level:'products', ini:'МА',
+    photoFile:'Maxmudov Abdusamadxon.png' },
+  { name:'Bahriddinov Humoyun',
+    role:'Продуктолог',
+    desc:'Работа с банками и крупными партнёрами',
+    sec:'products', level:'products', ini:'БХ',
+    photoFile:'Bahriddinov Humoyun.png' },
+  { name:'Mirzakulov Tolibjon',
+    role:'Директор ООО «MULTIBROKER»',
+    desc:'Развитие инвестиционного сервиса Jett.uz',
+    sec:'products', level:'products', ini:'МТ',
+    photoFile:null },
 
   /* АДМИНИСТРАТИВНОЕ ОБЕСПЕЧЕНИЕ */
-  { id:'tursunov', name:'Tursunov Botir', role:'Управляющий делами', dept:'',
-    level:'admin', sec:'admin', photo:'photos/Tursunov Botir Baxtiyorovich.png', ini:'ТБ',
-    tg:null, ph:'+998 33 847 11 11', desc:'Административно-хозяйственное обеспечение, организация офиса' },
-  { id:'maletina', name:'Maletina Karina', role:'Офис-менеджер', dept:'',
-    level:'admin', sec:'admin', photo:'photos/Maletina Karina.png', ini:'МК',
-    tg:null, ph:null, desc:'Встреча гостей, документы, организационная поддержка офиса' },
+  { name:'Tursunov Botir',
+    role:'Управляющий делами',
+    desc:'Административно-хозяйственное обеспечение, организация офиса',
+    sec:'admin', level:'admin', ini:'ТБ',
+    photoFile:'Tursunov Botir Baxtiyorovich.png' },
+  { name:'Maletina Karina',
+    role:'Офис-менеджер',
+    desc:'Встреча гостей, сканирование документов, организационная поддержка',
+    sec:'admin', level:'admin', ini:'МК',
+    photoFile:'Maletina Karina.png' },
+];
+
+/* ── COMPANIES ──────────────────────────────────────────── */
+const COMPANIES = [
+  { abbr:'MC', name:'АО «MULTICARD PAYMENT»', type:'Платёжная организация',
+    desc:'Осуществляет деятельность в сфере платёжных сервисов, приёма и обработки платежей, взаимодействия с банками, партнёрами и мерчантами.' },
+  { abbr:'RT', name:'ООО «RAHMAT TECH»', type:'IT-компания группы',
+    desc:'Обеспечивает разработку, внедрение, сопровождение и развитие IT-процессов и программных решений для АО «MULTICARD PAYMENT».' },
+  { abbr:'FP', name:'ООО «FINTECH PLATFORMS»', type:'Инфраструктурная компания группы',
+    desc:'Обслуживает серверную инфраструктуру, необходимую для стабильной работы IT-систем и сервисов АО «MULTICARD PAYMENT».' },
+  { abbr:'MF', name:'ООО МФО «MULTIFINANCE»', type:'Микрофинансовая организация',
+    desc:'Развивает кредитные и микрофинансовые продукты в рамках группы компаний RAHMAT.' },
+  { abbr:'MB', name:'ООО «MULTIBROKER»', type:'IT-компания группы',
+    desc:'Развивает инвестиционный сервис Jett.uz' },
 ];
 
 /* ── LEVEL CONFIG ───────────────────────────────────────── */
@@ -417,7 +509,7 @@ const LV = {
   admin:    { c:'#6B7280', bg:'#F9FAFB', label:'АХО' },
 };
 
-/* ── SECTION ICONS (currentColor) ──────────────────────── */
+/* ── SECTION ICONS ──────────────────────────────────────── */
 const SI = {
   strategic:`<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>`,
   it:       `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 15h2M2 9h2M20 15h2M20 9h2"/><rect x="4" y="4" width="16" height="16" rx="2"/></svg>`,
@@ -428,54 +520,54 @@ const SI = {
   admin:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>`,
 };
 
-/* ── CONTACT ICONS ──────────────────────────────────────── */
-const ITAG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.56 8.25-2.01 9.48c-.15.66-.54.82-1.08.51l-3-2.21-1.45 1.39c-.16.16-.3.3-.61.3l.21-3.05 5.56-5.02c.24-.21-.05-.33-.37-.12L7.09 14.42l-2.95-.92c-.64-.2-.65-.64.14-.95l11.54-4.45c.54-.19 1 .13.74.15z"/></svg>`;
-const PTAG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 010 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.28-1.28a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>`;
+/* ── PHOTO POSITION (ratio-based, with posOverride support) ─ */
+function applyPhotoPos(img) {
+  if (img.dataset.posOverride) {
+    img.style.objectPosition = img.dataset.posOverride;
+    if (img.dataset.contain) img.style.objectFit = 'contain';
+    return;
+  }
+  const r = img.naturalWidth / img.naturalHeight;
+  if (r < 0.8)      img.style.objectPosition = 'center 15%';
+  else if (r > 1.2) img.style.objectPosition = 'center 30%';
+  else               img.style.objectPosition = 'center 20%';
+}
+
+/* handles images already loaded from cache */
+function initPhotoPositions() {
+  document.querySelectorAll('.card-photo img').forEach(img => {
+    if (img.complete && img.naturalWidth) applyPhotoPos(img);
+  });
+}
 
 /* ── RENDER CARD ────────────────────────────────────────── */
-let idx = 0;
+let cardIdx = 0;
 
 function card(emp) {
   const lv    = LV[emp.level] || LV.admin;
-  const delay = (idx++ * 40) + 'ms';
+  const delay = (cardIdx++ * 40) + 'ms';
 
-  /* Photo + initials */
-  const imgStyle = emp.photoStyle ? `style="${emp.photoStyle}"` : '';
-  const photoBlock = emp.photo
-    ? `<img src="${emp.photo}" alt="${emp.name}" ${imgStyle}
-           onerror="this.style.display='none';this.parentElement.querySelector('.initials').style.display='flex'"
-           onload="this.style.display='block';this.parentElement.querySelector('.initials').style.display='none'">
+  const posAttr     = emp.posOverride  ? ` data-pos-override="${emp.posOverride}"` : '';
+  const containAttr = emp.photoContain ? ' data-contain="1"' : '';
+  const photoBlock = emp.photoFile
+    ? `<img src="photos/${encodeURIComponent(emp.photoFile)}" alt="${emp.name}"
+           onload="applyPhotoPos(this)"${posAttr}${containAttr}
+           onerror="this.style.display='none';this.parentElement.querySelector('.initials').style.display='flex'">
        <div class="initials" style="display:none">${emp.ini}</div>`
     : `<div class="initials">${emp.ini}</div>`;
 
-  /* Contact links */
-  const links = [];
-  if (emp.tg)
-    links.push(`<a class="clink" href="https://t.me/${emp.tg}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${ITAG}&nbsp;@${emp.tg}</a>`);
-  if (emp.ph) {
-    const raw = emp.ph.replace(/\s/g, '');
-    links.push(`<a class="clink" href="tel:${raw}" onclick="event.stopPropagation()">${PTAG}&nbsp;${emp.ph}</a>`);
-  }
-  const contacts = links.length ? links.join('') : `<span class="cno">Контакты не указаны</span>`;
-
-  const dept = emp.dept ? `<div class="card-dept">${emp.dept}</div>` : '';
-  const desc = emp.desc ? `<p class="card-desc">${emp.desc}</p>`   : '';
+  const photoBgStyle = emp.photoBg ? ` style="background:${emp.photoBg}"` : '';
+  const desc = emp.desc ? `<p class="card-desc">${emp.desc}</p>` : '';
 
   return `<article class="card"
   style="--strip:${lv.c};--strip-bg:${lv.bg};animation-delay:${delay}"
-  data-q="${(emp.name + ' ' + emp.role + ' ' + (emp.dept || '')).toLowerCase()}"
-  onclick="toggle(this)">
-  <div class="card-photo"${emp.photoBg ? ` style="background:${emp.photoBg}"` : ''}>${photoBlock}</div>
+  data-q="${(emp.name + ' ' + emp.role).toLowerCase()}">
+  <div class="card-photo"${photoBgStyle}>${photoBlock}</div>
   <div class="card-body">
     <span class="card-badge">${lv.label}</span>
     <div class="card-name">${emp.name}</div>
     <div class="card-role">${emp.role}</div>
-    ${dept}
-    <div class="card-info">
-      ${desc}
-      <div class="card-hint">нажмите для контактов</div>
-    </div>
-    <div class="card-contacts">${contacts}</div>
+    ${desc}
   </div>
 </article>`;
 }
@@ -483,7 +575,6 @@ function card(emp) {
 /* ── RENDER SECTION ─────────────────────────────────────── */
 function sec(label, icon, lv, emps, gridCls) {
   if (!emps.length) return '';
-  const cards = emps.map(e => card(e)).join('');
   return `<section class="sec">
   <div class="sec-hdr">
     <div class="sec-icon" style="background:${lv.bg};color:${lv.c}">${icon}</div>
@@ -491,26 +582,39 @@ function sec(label, icon, lv, emps, gridCls) {
     <span class="sec-count">${emps.length}</span>
     <div class="sec-line"></div>
   </div>
-  <div class="${gridCls}">${cards}</div>
+  <div class="${gridCls}">${emps.map(e => card(e)).join('')}</div>
 </section>`;
 }
 
-/* ── TOGGLE CONTACTS ────────────────────────────────────── */
-function toggle(card) {
-  const c    = card.querySelector('.card-contacts');
-  const info = card.querySelector('.card-info');
-  if (!c) return;
-  const open = c.classList.toggle('open');
-  if (info) info.style.display = open ? 'none' : '';
+/* ── RENDER COMPANIES ───────────────────────────────────── */
+function renderCompanies() {
+  document.getElementById('co-grid').innerHTML = COMPANIES.map(co =>
+    `<div class="co-card">
+      <div class="co-logo">${co.abbr}</div>
+      <div class="co-name">${co.name}</div>
+      <div class="co-type">${co.type}</div>
+      <div class="co-desc">${co.desc}</div>
+    </div>`
+  ).join('');
 }
 
-/* ── RENDER ─────────────────────────────────────────────── */
+/* ── TAB SWITCH ─────────────────────────────────────────── */
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t =>
+    t.classList.toggle('tab-active', t.dataset.tab === tab));
+  const isOrg = tab === 'org';
+  document.getElementById('app').style.display      = isOrg ? '' : 'none';
+  document.getElementById('about').classList.toggle('active', !isOrg);
+  document.getElementById('srch-row').style.display = isOrg ? '' : 'none';
+}
+
+/* ── RENDER ORG ─────────────────────────────────────────── */
 function render(q) {
-  idx = 0;
+  cardIdx = 0;
   const app   = document.getElementById('app');
   const query = (q || '').trim().toLowerCase();
   const list  = query
-    ? E.filter(e => (e.name + ' ' + e.role + ' ' + (e.dept || '')).toLowerCase().includes(query))
+    ? E.filter(e => (e.name + ' ' + e.role).toLowerCase().includes(query))
     : E;
 
   if (query && !list.length) {
@@ -520,18 +624,18 @@ function render(q) {
   }
 
   const g = s => list.filter(e => e.sec === s);
-
   app.innerHTML = [
-    sec('Стратегическое управление',         SI.strategic, LV.strategic, g('strategic'), 'gs'),
-    sec('IT · Технический блок · ИБ',        SI.it,        LV.it,        g('it'),        'g2'),
-    sec('Финансы и кредитные продукты',       SI.finance,   LV.finance,   g('finance'),   'g2'),
-    sec('Контроль · Юридический блок · HR',  SI.control,   LV.control,   g('control'),   'g2'),
-    sec('Коммерция · Продажи · Операционный', SI.commerce, LV.commerce,  g('commerce'),  'g2'),
-    sec('Продуктовые направления',            SI.products,  LV.products,  g('products'),  'g2'),
-    sec('Административное обеспечение',       SI.admin,     LV.admin,     g('admin'),     'g2'),
+    sec('Стратегическое управление',          SI.strategic, LV.strategic, g('strategic'), 'gs'),
+    sec('IT · Технический блок · ИБ',         SI.it,        LV.it,        g('it'),        'g2'),
+    sec('Финансы и кредитные продукты',        SI.finance,   LV.finance,   g('finance'),   'g2'),
+    sec('Контроль · Юридический блок · HR',   SI.control,   LV.control,   g('control'),   'g2'),
+    sec('Коммерция · Продажи · Операционный', SI.commerce,  LV.commerce,  g('commerce'),  'g2'),
+    sec('Продуктовые направления',             SI.products,  LV.products,  g('products'),  'g2'),
+    sec('Административное обеспечение',        SI.admin,     LV.admin,     g('admin'),     'g2'),
   ].join('');
 
   document.getElementById('srch-badge').textContent = query ? `${list.length} из ${E.length}` : '';
+  initPhotoPositions();
 }
 
 /* ── SEARCH ─────────────────────────────────────────────── */
@@ -544,6 +648,7 @@ document.getElementById('srch').addEventListener('input', function () {
 /* ── INIT ───────────────────────────────────────────────── */
 document.getElementById('yr').textContent = new Date().getFullYear();
 render();
+renderCompanies();
 </script>
 </body>
 </html>
