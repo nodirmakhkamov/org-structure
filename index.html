@@ -418,10 +418,20 @@ const E = [
     desc:'Финансовое управление группы компаний и руководство деятельностью ООО МФО «MULTIFINANCE»',
     sec:'finance', level:'finance', ini:'ШШ',
     photoFile:'Shoikromov Shorasul.png' },
+  { name:'Mukarram Ismailova',
+    role:'Главный бухгалтер',
+    desc:'Главный бухгалтер ООО «RAHMAT TECH»',
+    sec:'finance', level:'finance', ini:'МИ',
+    photoFile:'MUKARRAM ISMAILOVA.png' },
+  { name:'Barno Nabiyeva',
+    role:'Главный бухгалтер',
+    desc:'Главный бухгалтер АО «MULTICARD PAYMENT»',
+    sec:'finance', level:'finance', ini:'БН',
+    photoFile:'BARNO NABIYEVA.png' },
   { name:'Elvira Aglyamova',
     role:'Начальник отдела развития кредитных продуктов ООО «RAHMAT TECH»',
     desc:'Координация ИТ проектов по кредитным продуктам ООО МФО «MULTIFINANCE»',
-    sec:'finance', level:'finance', ini:'АЭ',
+    sec:'products', level:'products', ini:'АЭ',
     photoFile:'Aglyamova Elvira.png' },
 
   /* КОНТРОЛЬ · ЮРИДИЧЕСКИЙ БЛОК · HR */
@@ -512,7 +522,7 @@ const E = [
     role:'Директор ООО «MULTIBROKER»',
     desc:'Развитие инвестиционного сервиса Jett.uz',
     sec:'products', level:'products', ini:'МТ',
-    photoFile:null },
+    photoFile:'Tolibjon Mirzakulov.png' },
 
   /* АДМИНИСТРАТИВНОЕ ОБЕСПЕЧЕНИЕ */
   { name:'Botir Tursunov',
@@ -676,7 +686,7 @@ function render(q) {
   app.innerHTML = [
     sec('Стратегическое управление',          SI.strategic, LV.strategic, g('strategic'), 'gs'),
     sec('IT · Технический блок · ИБ',         SI.it,        LV.it,        g('it'),        'g2'),
-    sec('Финансы и кредитные продукты',        SI.finance,   LV.finance,   g('finance'),   'g2'),
+    sec('Финансы',                               SI.finance,   LV.finance,   g('finance'),   'g2'),
     sec('Контроль · Юридический блок · HR',   SI.control,   LV.control,   g('control'),   'g2'),
     sec('Коммерция · Продажи · Операционный', SI.commerce,  LV.commerce,  g('commerce'),  'g2'),
     sec('Продуктовые направления',             SI.products,  LV.products,  g('products'),  'g2'),
