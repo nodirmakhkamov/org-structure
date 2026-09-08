@@ -3,328 +3,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rahmat · Организационная структура</title>
+<title>Команда · Rahmat</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>R</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&family=Unbounded:wght@700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
-/* ── RESET ──────────────────────────────────────────────── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --brand:    #E8392A;
-  --brand-lt: #FFF0EE;
-  --bg:       #F4F4F4;
-  --card:     #FFFFFF;
-  --t1:       #1A1A1A;
-  --t2:       #6B6B6B;
-  --t3:       #9B9B9B;
-  --border:   #E5E5E5;
-  --border-h: #CCCCCC;
-  --shadow:   0 2px 8px rgba(0,0,0,.06);
-  --shadow-h: 0 4px 16px rgba(0,0,0,.10);
-  --r:        16px;
-  --font:     'Inter', -apple-system, sans-serif;
-  --ease:     cubic-bezier(.4,0,.2,1);
-  --ch:       160px;
-  --pw:       38%;
-}
-html{scroll-behavior:smooth}
-body{
-  font-family:var(--font);
-  background:var(--bg);
-  color:var(--t1);
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-  line-height:1.5;
-}
-a{color:inherit;text-decoration:none}
+body{background:var(--mist);color:var(--ink)}
+.team{max-width:1120px;margin:0 auto;padding:24px 24px 72px;width:100%}
+.page-h{margin:6px 0 2px}
+.page-h em{font-style:normal;color:var(--red)}
 
-/* ── HEADER ─────────────────────────────────────────────── */
-.hdr{
-  background:var(--card);
-  border-bottom:1px solid var(--border);
-  padding:16px 24px;
+/* ── FAQ плитки ─────────────────────────────────────────── */
+.faq{margin:22px 0 26px}
+.faq-cap{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.faq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.faq-tile{
+  display:flex;flex-direction:column;gap:6px;min-height:44px;
+  text-align:left;border:1px solid var(--line);border-radius:14px;background:var(--paper);
+  padding:14px 15px;cursor:pointer;font-family:var(--body);
+  transition:border-color .15s ease,transform .15s ease;
 }
-.hdr-inner{
-  max-width:1200px;margin:0 auto;
-  display:flex;align-items:center;gap:12px;
-}
-.logo-brand{
-  font-size:22px;font-weight:700;
-  color:var(--brand);letter-spacing:-.03em;line-height:1;
-}
-.logo-sep{color:var(--border);margin:0 2px;font-weight:300}
-.logo-sub{font-size:13px;font-weight:400;color:var(--t3);white-space:nowrap}
+.faq-tile:hover{border-color:var(--red);transform:translateY(-1px)}
+.faq-tile .q{font-weight:700;font-size:14.5px;color:var(--ink)}
+.faq-tile .a{font-size:12px;color:var(--muted);line-height:1.35}
+.faq-tile .ico{font-size:18px;line-height:1}
 
-/* ── SEARCH + TABS BAR ──────────────────────────────────── */
-.srch-bar{
-  position:sticky;top:var(--head-h);z-index:200;
-  background:var(--card);
-  border-bottom:1px solid var(--border);
-  padding:10px 24px 0;
-  box-shadow:0 1px 4px rgba(0,0,0,.04);
+/* ── Переключатель режимов ──────────────────────────────── */
+.modes{display:inline-flex;gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px;margin-bottom:22px}
+.mode-btn{
+  appearance:none;border:none;background:transparent;cursor:pointer;
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+  height:40px;padding:0 20px;border-radius:999px;transition:background .15s,color .15s;
 }
-.srch-inner{
-  max-width:1200px;margin:0 auto;
-  position:relative;display:flex;align-items:center;
-}
-.srch-ico{
-  position:absolute;left:14px;color:var(--t3);
-  display:flex;pointer-events:none;
-}
-.srch-input{
-  width:100%;
-  padding:10px 90px 10px 40px;
-  background:var(--card);
-  border:1.5px solid var(--border);
-  border-radius:12px;
-  font-family:var(--font);font-size:14px;
-  color:var(--t1);outline:none;
-  transition:border-color .18s var(--ease),box-shadow .18s var(--ease);
-}
-.srch-input::placeholder{color:var(--t3)}
-.srch-input:focus{
-  border-color:var(--brand);
-  box-shadow:0 0 0 3px rgba(232,57,42,.08);
-}
-.srch-badge{
-  position:absolute;right:14px;
-  font-size:12px;color:var(--t3);pointer-events:none;
-}
+.mode-btn[aria-pressed="true"]{background:var(--ink);color:#fff}
 
-/* ── TABS ───────────────────────────────────────────────── */
-.tabs-inner{
-  max-width:1200px;margin:8px auto 0;
-  display:flex;gap:4px;
-}
-.tab{
-  padding:7px 16px;
-  border-radius:8px 8px 0 0;
-  border:none;cursor:pointer;
-  font-family:var(--font);font-size:13px;font-weight:500;
-  background:transparent;color:var(--t3);
-  transition:background .15s,color .15s;
-  outline:none;white-space:nowrap;
-}
-.tab.tab-active{background:var(--brand);color:#fff}
-.tab:not(.tab-active):hover{color:var(--t1);background:var(--bg)}
+/* ── Общая карточка человека (компактная, для схемы) ────── */
+.pc{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:9px 11px;text-align:left}
+.pc-av{width:38px;height:38px;border-radius:50%;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:12px;background:color-mix(in srgb,var(--c) 15%,#fff);color:var(--c)}
+.pc-av img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+.pc-meta{min-width:0}
+.pc-name{font-size:13px;font-weight:700;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc-role{font-size:11px;color:var(--muted);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pc-leader{border:1.5px solid var(--red)}
+.pc-head{border:1.5px solid var(--c)}
 
-/* ── LAYOUT ─────────────────────────────────────────────── */
-.main{max-width:1200px;margin:0 auto;padding:28px 24px 80px}
+/* ── Режим «Схема» (десктоп) ────────────────────────────── */
+.schema{padding-top:6px}
+.schema-leader-wrap{display:flex;justify-content:center}
+.schema-leader-wrap .pc{max-width:340px;width:100%}
+.schema-stem{width:2px;height:26px;background:var(--line);margin:0 auto}
+.schema-blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px;align-items:start}
+.sb{border-top:2px solid var(--line);padding-top:14px;position:relative}
+.sb-cap{display:flex;align-items:center;gap:8px;width:100%;background:transparent;border:none;cursor:default;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0;margin-bottom:12px;text-align:left}
+.sb-cap .dot{width:9px;height:9px;border-radius:50%;background:var(--c);flex-shrink:0}
+.sb-count{margin-left:auto;font-size:11px;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:0 7px;line-height:18px}
+.sb-chev{display:none}
+.sb-body{display:flex;flex-direction:column;gap:8px}
+.sb-connect{width:2px;height:10px;background:var(--line);margin:0 auto}
+.sb-list{display:flex;flex-direction:column;gap:8px}
 
-/* ── SECTION ────────────────────────────────────────────── */
-.sec{margin-bottom:36px}
-.sec:last-child{margin-bottom:0}
-.sec-hdr{display:flex;align-items:center;gap:8px;margin-bottom:14px}
-.sec-icon{
-  width:26px;height:26px;border-radius:7px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;font-size:13px;
+/* ── Режим «Люди» ───────────────────────────────────────── */
+.tools{display:flex;flex-direction:column;gap:12px;margin-bottom:18px}
+.srch{position:relative}
+.srch input{
+  width:100%;min-height:46px;padding:0 44px 0 42px;
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  font-family:var(--body);font-size:15px;color:var(--ink);outline:none;
+  transition:border-color .15s,box-shadow .15s;
 }
-.sec-label{
-  font-size:11px;font-weight:600;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--t2);white-space:nowrap;
+.srch input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(244,53,48,.1)}
+.srch .ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;display:flex}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{
+  appearance:none;cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  border:1px solid var(--line);background:var(--paper);color:var(--muted);
+  height:36px;padding:0 13px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;transition:.15s;
 }
-.sec-count{
-  font-size:11px;color:var(--t3);
-  background:var(--bg);border:1px solid var(--border);
-  border-radius:100px;padding:1px 7px;
-}
-.sec-line{flex:1;height:1px;background:var(--border)}
+.chip .dot{width:8px;height:8px;border-radius:50%;background:var(--c,var(--muted))}
+.chip[aria-pressed="true"]{border-color:var(--ink);color:var(--ink);background:#fff}
+.chip[aria-pressed="true"] .dot{box-shadow:0 0 0 3px color-mix(in srgb,var(--c,var(--ink)) 22%,transparent)}
 
-/* ── GRIDS ──────────────────────────────────────────────── */
-.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
-.gs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
+.focus-banner{display:none;align-items:center;gap:12px;background:color-mix(in srgb,var(--red) 8%,#fff);border:1px solid color-mix(in srgb,var(--red) 30%,#fff);border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:14px}
+.focus-banner.on{display:flex}
+.focus-banner button{margin-left:auto;appearance:none;cursor:pointer;border:1px solid var(--line);background:#fff;border-radius:999px;height:34px;padding:0 14px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
 
-/* ── CARD ───────────────────────────────────────────────── */
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  overflow:hidden;
-  display:flex;flex-direction:row;
-  min-height:var(--ch);
-  position:relative;
-  box-shadow:var(--shadow);
-  animation:fadeUp .35s var(--ease) both;
-  transition:box-shadow .2s var(--ease),border-color .2s var(--ease);
-}
-.card:hover{box-shadow:var(--shadow-h);border-color:var(--border-h)}
-.card::before{
-  content:'';position:absolute;
-  top:0;left:0;right:0;height:3px;
-  background:var(--strip,var(--brand));
-  z-index:3;pointer-events:none;
-}
+.sec{margin-bottom:28px}
+.sec-hdr{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+.sec-hdr .dot{width:11px;height:11px;border-radius:50%;background:var(--c)}
+.sec-hdr .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.sec-hdr .cnt{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:0 7px;line-height:18px}
+.sec-hdr .line{flex:1;height:1px;background:var(--line)}
 
-/* ── PHOTO ZONE ─────────────────────────────────────────── */
-.card-photo{
-  width:var(--pw);flex-shrink:0;
-  position:relative;overflow:hidden;
-  background:var(--strip-bg,var(--brand-lt));
-}
-/* right-to-left fade into card background */
-.card-photo::after{
-  content:'';position:absolute;
-  top:0;right:0;
-  width:30%;height:100%;
-  background:linear-gradient(to left, var(--card) 0%, transparent 100%);
-  z-index:2;pointer-events:none;
-}
-.card-photo img{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  object-fit:cover;object-position:center 20%;
-  display:block;
-}
-.initials{
-  position:absolute;inset:0;
-  display:flex;align-items:center;justify-content:center;
-  font-size:26px;font-weight:700;letter-spacing:-.02em;
-  color:var(--strip,var(--brand));
-  user-select:none;
-}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.card{display:flex;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;position:relative;min-height:132px}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c);z-index:2}
+.card-photo{width:34%;flex-shrink:0;position:relative;overflow:hidden;background:color-mix(in srgb,var(--c) 13%,#fff)}
+.card-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+.card-ini{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:24px;color:var(--c)}
+.card-body{flex:1;min-width:0;padding:13px 15px;display:flex;flex-direction:column;gap:3px}
+.card-badge{align-self:flex-start;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--c);background:color-mix(in srgb,var(--c) 12%,#fff);border-radius:5px;padding:2px 7px;margin-bottom:3px}
+.card-name{font-size:14.5px;font-weight:700;line-height:1.25}
+.card-role{font-size:12px;color:var(--muted);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-desc{font-size:11.5px;color:var(--muted);line-height:1.4;margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-contacts{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px;padding-top:8px}
+.card-contacts a,.card-contacts span{font-family:var(--mono);font-size:11px;color:var(--muted);text-decoration:none}
+.card-contacts a:hover{color:var(--red)}
 
-/* ── TEXT BODY ──────────────────────────────────────────── */
-.card-body{
-  padding:13px 14px 13px 13px;
-  display:flex;flex-direction:column;gap:3px;
-  flex:1;overflow:hidden;min-width:0;
-}
-.card-badge{
-  display:inline-flex;align-items:center;
-  font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
-  background:var(--brand-lt);color:var(--brand);
-  border-radius:4px;padding:2px 6px;
-  width:fit-content;margin-bottom:2px;flex-shrink:0;
-}
-.card-name{
-  font-size:13.5px;font-weight:600;color:var(--t1);
-  line-height:1.25;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.card-role{
-  font-size:11.5px;font-weight:400;color:var(--t2);line-height:1.35;
-  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;
-  line-clamp:3;overflow:hidden;
-}
-.card-desc{
-  font-size:10.5px;color:var(--t3);line-height:1.45;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
-  line-clamp:2;overflow:hidden;margin-top:4px;
-}
+.empty{text-align:center;padding:56px 20px;color:var(--muted);font-size:15px}
 
-/* ── EMPTY ──────────────────────────────────────────────── */
-.empty{
-  grid-column:1/-1;text-align:center;
-  padding:64px 24px;color:var(--t3);font-size:14px;
-}
+.is-hidden{display:none!important}
 
-/* ── ABOUT / COMPANY CARDS ──────────────────────────────── */
-.about-wrap{display:none}
-.about-wrap.active{display:block}
-
-.about-intro{
-  background:#fff;
-  border-left:4px solid var(--brand);
-  border-radius:var(--r);
-  padding:24px;
-  margin-bottom:20px;
-  box-shadow:var(--shadow);
+/* ── Мобайл: дерево вместо горизонтальной схемы ─────────── */
+@media (max-width:768px){
+  .faq-grid{grid-template-columns:1fr 1fr}
+  .schema-blocks{display:block}
+  .sb{border-top:1px solid var(--line);padding-top:0;margin-top:10px}
+  .sb:first-child{margin-top:0}
+  .sb-cap{cursor:pointer;min-height:48px;margin-bottom:0;color:var(--ink);font-size:12px}
+  .sb-chev{display:block;margin-left:8px;transition:transform .2s ease;color:var(--muted)}
+  .sb.collapsed .sb-chev{transform:rotate(-90deg)}
+  .sb-count{margin-left:auto}
+  .sb .sb-body{padding:2px 0 14px}
+  .sb.collapsed .sb-body{display:none}
+  .cards{grid-template-columns:1fr}
+  .card{min-height:120px}
 }
-.about-intro-title{
-  font-size:20px;font-weight:700;color:var(--t1);
-  margin-bottom:6px;line-height:1.25;
-}
-.about-intro-sub{
-  font-size:14px;color:var(--t3);line-height:1.55;
-}
-
-.companies-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:16px;
-}
-.co-card{
-  background:#fff;border:1px solid var(--border);
-  border-radius:var(--r);box-shadow:var(--shadow);
-  overflow:hidden;position:relative;padding:22px 20px 24px;
-}
-.co-card::before{
-  content:'';position:absolute;
-  top:0;left:0;right:0;height:3px;
-  background:var(--co-color, var(--brand));
-}
-.co-logo{
-  width:44px;height:44px;border-radius:50%;
-  background:var(--co-bg, var(--brand-lt));
-  color:var(--co-color, var(--brand));
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:700;letter-spacing:-.01em;
-  margin-bottom:14px;flex-shrink:0;
-}
-.co-name{font-size:16px;font-weight:700;color:var(--t1);margin-bottom:3px;line-height:1.3}
-.co-type{font-size:12px;font-style:italic;color:var(--t3);margin-bottom:0}
-.co-divider{height:1px;background:var(--border);margin:10px 0}
-.co-desc{font-size:13px;color:var(--t2);line-height:1.55}
-
-/* ── FOOTER ─────────────────────────────────────────────── */
-.ftr{
-  text-align:center;padding:20px 24px;
-  border-top:1px solid var(--border);
-  font-size:11px;color:var(--t3);
-  background:var(--card);
-}
-
-/* ── ANIMATIONS ─────────────────────────────────────────── */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(12px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* ── RESPONSIVE ─────────────────────────────────────────── */
-
-/* Desktop ≥ 769px */
-@media(min-width:769px){
-  :root{--ch:155px}
-  .gs .card:first-child{grid-column:1/-1}
-}
-
-/* Tablet 480–768px */
-@media(min-width:480px) and (max-width:768px){
-  :root{--ch:130px}
-  .card-name{font-size:13px}
-  .card-desc{font-size:10px}
-}
-
-/* Mobile < 480px */
-@media(max-width:479px){
-  :root{--ch:115px;--pw:33%}
-  .g2,.gs,.companies-grid{grid-template-columns:1fr}
-  .main{padding:16px 12px 60px}
-  .hdr{padding:12px 12px}
-  .logo-sub{display:none}
-  .srch-bar{padding:8px 12px 0}
-  .srch-input{min-height:48px;font-size:15px;padding:0 12px 0 40px}
-  .tabs-inner{gap:0}
-  .tab{
-    flex:1;height:44px;
-    border-radius:8px 8px 0 0;
-    font-size:12px;padding:0 6px;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .sec{margin-bottom:20px}
-  .sec-hdr{margin-bottom:8px}
-  .sec-label{font-size:11px}
-  .sec-icon{width:22px;height:22px;font-size:11px}
-  .card-name{font-size:12px;font-weight:600}
-  .card-role{font-size:10px;-webkit-line-clamp:2;line-clamp:2}
-
-  .card-body{padding:8px 8px 8px 7px;gap:1px}
-  .initials{font-size:18px}
+@media (max-width:400px){
+  .faq-grid{grid-template-columns:1fr}
+  .team{padding:16px 12px 60px}
 }
 </style>
 </head>
@@ -340,373 +148,222 @@ a{color:inherit;text-decoration:none}
   </div>
 </header>
 
-<div class="srch-bar">
-  <div class="srch-inner" id="srch-row">
-    <span class="srch-ico">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-    </span>
-    <input class="srch-input" id="srch" type="search"
-      placeholder="Поиск по имени, должности, отделу…"
-      autocomplete="off" spellcheck="false">
-    <span class="srch-badge" id="srch-badge"></span>
+<main class="team">
+  <div class="eyebrow">Кто есть кто</div>
+  <h1 class="h-display page-h" style="font-size:clamp(28px,5vw,44px)">Наша <em>команда</em></h1>
+
+  <!-- Частые вопросы новичка -->
+  <section class="faq">
+    <div class="faq-cap">Частые вопросы новичка</div>
+    <div class="faq-grid" id="faq"></div>
+  </section>
+
+  <!-- Переключатель режимов -->
+  <div class="modes" role="group" aria-label="Режим отображения">
+    <button class="mode-btn" data-mode="schema" aria-pressed="true" onclick="setMode('schema')">Схема</button>
+    <button class="mode-btn" data-mode="people" aria-pressed="false" onclick="setMode('people')">Люди</button>
   </div>
-  <div class="tabs-inner">
-    <button class="tab tab-active" data-tab="org" onclick="switchTab('org')">Организационная структура</button>
-    <button class="tab" data-tab="about" onclick="switchTab('about')">О компании</button>
+
+  <!-- Режим «Схема» -->
+  <div id="view-schema" class="schema"></div>
+
+  <!-- Режим «Люди» -->
+  <div id="view-people" class="is-hidden">
+    <div class="tools">
+      <div class="srch">
+        <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+        <input id="srch" type="search" autocomplete="off" spellcheck="false"
+          placeholder="Поиск по имени, должности, зоне ответственности…">
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="focus-banner" id="focus-banner">
+      <span id="focus-text"></span>
+      <button onclick="clearFocus()">Показать всех</button>
+    </div>
+    <div id="people-list"></div>
   </div>
-</div>
+</main>
 
-<main class="main" id="app"></main>
-
-<div class="main about-wrap" id="about">
-  <div class="about-intro">
-    <div class="about-intro-title">Группа компаний RAHMAT</div>
-    <div class="about-intro-sub">Объединяет компании в сфере платёжных сервисов,
-    IT-инфраструктуры, финтех-продуктов и микрофинансирования</div>
-  </div>
-  <div class="companies-grid" id="co-grid"></div>
-</div>
-
-<footer class="ftr">Rahmat · Организационная структура · <span id="yr"></span></footer>
-
+<script src="../assets/people.js"></script>
 <script>
-/* ── EMPLOYEES ──────────────────────────────────────────── */
-const E = [
-  /* СТРАТЕГИЧЕСКОЕ УПРАВЛЕНИЕ */
-  { name:'Ilxom Idiyev',
-    role:'Директор ООО «RAHMAT TECH» / Председатель Набсовета АО «MULTICARD PAYMENT»',
-    desc:'Стратегическое развитие и общее управление группы компаний',
-    sec:'strategic', level:'strategic', ini:'ИИ',
-    photoFile:'Idiyev Ilxom Aminovich.png', posOverride:'center center', photoContain:true, photoBg:'#f5f5f5' },
-  { name:'Alisher Bozorov',
-    role:'Член Набсовета АО «MULTICARD PAYMENT»',
-    desc:'Финансовое планирование группы компаний',
-    sec:'strategic', level:'strategic', ini:'БА',
-    photoFile:'Bozorov Alisher.png' },
-  { name:'Avaz Mutalov',
-    role:'Генеральный директор АО «MULTICARD PAYMENT»',
-    desc:'Управление АО «MULTICARD PAYMENT»',
-    sec:'strategic', level:'strategic', ini:'МА',
-    photoFile:'Mutalov Avaz.png' },
+const BLOCK_ORDER = ['manage','it','finance','control','commerce','products','adm'];
+const byId = id => PEOPLE.find(p => p.id === id);
 
-  /* IT · ТЕХНИЧЕСКИЙ БЛОК · ИБ */
-  { name:'Andrey Sidorov',
-    role:'Директор по IT ООО «FINTECH PLATFORMS»',
-    desc:'Сопровождение серверной архитектуры, внутренних ИТ систем (Jira и др.)',
-    sec:'it', level:'it', ini:'СА',
-    photoFile:'Sidorov Andrey.png' },
-  { name:'Aleksey Orlovskiy',
-    role:'Технический директор ООО «RAHMAT TECH»',
-    desc:'Руководство техническим отделом ООО «RAHMAT TECH»',
-    sec:'it', level:'it', ini:'ОА',
-    photoFile:'Orlovskiy Aleksey.png' },
-  { name:'Dmitriy Muminov',
-    role:'Директор по информационной безопасности ООО «RAHMAT TECH»',
-    desc:'Информационная безопасность, защита данных, контроль доступов',
-    sec:'it', level:'it', ini:'МД',
-    photoFile:null },
-  { name:'Kozim Mirazizov',
-    role:'Team lead',
-    desc:'Руководство командой, координация задач',
-    sec:'it', level:'it', ini:'МК',
-    photoFile:'MIRAZIZOV KOZIM ADILOVICH.jpg', posOverride:'center 20%' },
-  { name:'Aleksandr Veksler',
-    role:'Team lead',
-    desc:'Руководство командой, координация задач',
-    sec:'it', level:'it', ini:'ВА',
-    photoFile:'VEKSLER ALEKSANDR ALEKSANDROVICH.jpg', posOverride:'center 40%' },
-
-  /* ФИНАНСЫ И КРЕДИТНЫЕ ПРОДУКТЫ */
-  { name:'Shorasul Shoikromov',
-    role:'Финансовый директор ООО «RAHMAT TECH» / Директор ООО МФО «MULTIFINANCE»',
-    desc:'Финансовое управление группы компаний и руководство деятельностью ООО МФО «MULTIFINANCE»',
-    sec:'finance', level:'finance', ini:'ШШ',
-    photoFile:'Shoikromov Shorasul.png' },
-  { name:'Mukarram Ismailova',
-    role:'Главный бухгалтер',
-    desc:'Главный бухгалтер ООО «RAHMAT TECH»',
-    sec:'finance', level:'finance', ini:'МИ',
-    photoFile:'MUKARRAM ISMAILOVA.png' },
-  { name:'Barno Nabiyeva',
-    role:'Главный бухгалтер',
-    desc:'Главный бухгалтер АО «MULTICARD PAYMENT»',
-    sec:'finance', level:'finance', ini:'БН',
-    photoFile:'BARNO NABIYEVA.png' },
-  { name:'Elvira Aglyamova',
-    role:'Начальник отдела развития кредитных продуктов ООО «RAHMAT TECH»',
-    desc:'Координация ИТ проектов по кредитным продуктам ООО МФО «MULTIFINANCE»',
-    sec:'products', level:'products', ini:'АЭ',
-    photoFile:'Aglyamova Elvira.png' },
-
-  /* КОНТРОЛЬ · ЮРИДИЧЕСКИЙ БЛОК · HR */
-  { name:'Rustam Zakirov',
-    role:'Начальник юридического отдела',
-    desc:'Юридические вопросы, договорная база и координация отдела по работе с персоналом',
-    sec:'control', level:'control', ini:'ЗР',
-    photoFile:'Zakirov Rustam.png' },
-  { name:'Aziz Nurkhanov',
-    role:'Менеджер по внутреннему контролю АО «MULTICARD PAYMENT»',
-    desc:'Вопросы AML/CFT и контроль соблюдения требований законодательства по внутреннему контролю',
-    sec:'control', level:'control', ini:'НА',
-    photoFile:'Nurkhanov Aziz.png' },
-  { name:'Dilira Xatipova',
-    role:'Специалист по кадровому администрированию',
-    desc:'Приём и увольнение, оформление отпусков, кадровый учёт',
-    sec:'control', level:'control', ini:'ДХ',
-    photoFile:null },
-  { name:'Nodir Makhkamov',
-    role:'IT-рекрутер',
-    desc:'Подбор IT-специалистов и сопровождение новых работников при найме',
-    sec:'control', level:'control', ini:'МН',
-    photoFile:'Makhkamov Nodir.jpeg' },
-  { name:'Dilnoza Maksudova',
-    role:'Специалист по документообороту',
-    desc:'Оформление и учёт писем, приказов, договоров, работа в Directum и других ЭДО',
-    sec:'control', level:'control', ini:'ДМ',
-    photoFile:'Maksudova Dilnoza.jpg' },
-
-  /* КОММЕРЦИЯ · ПРОДАЖИ · ОПЕРАЦИОННЫЙ БЛОК */
-  { name:'Konstantin Zinoviev',
-    role:'Начальник операционного отдела',
-    desc:'Поддержка и подключение POS-терминалов',
-    sec:'commerce', level:'commerce', ini:'ЗК',
-    photoFile:'Zinovev Konstantin.png' },
-  { name:'Sardor Pazilov',
-    role:'Начальник отдела маркетинга',
-    desc:'Маркетинговая стратегия, продвижение продуктов, бренд',
-    sec:'commerce', level:'commerce', ini:'ПС',
-    photoFile:'Pazilov Sardor.png' },
-  { name:'Luiza Kagay',
-    role:'Старший специалист по подключению',
-    desc:'Подключение партнёров, сопровождение процессов подключения',
-    sec:'commerce', level:'commerce', ini:'КЛ',
-    photoFile:'KAGAY LUIZA RUSTAMOVNA.jpg', posOverride:'center 25%' },
-  { name:'Sardorbek Tashtanbekov',
-    role:'Team lead контакт-центра',
-    desc:'Руководство контакт-центром, контроль качества обслуживания',
-    sec:'commerce', level:'commerce', ini:'ТС',
-    photoFile:'TASHTANBEKOV SARDORBEK BAXODIR O‘G‘LI.jpg', posOverride:'center 20%' },
-  /* ПРОДУКТОВЫЕ НАПРАВЛЕНИЯ */
-  { name:'Baxtiyor Nasirov',
-    role:'Начальник отдела Multidriver',
-    desc:'Развитие Multidriver, партнёрства с WB Taxi, Yandex Go, Uklon',
-    sec:'products', level:'products', ini:'НБ',
-    photoFile:'Nasirov Baxtiyor.png' },
-  { name:'Timur Manyurov',
-    role:'Начальник отдела Horeca',
-    desc:'Horeca, Rahmat Rest, агрегация доставок, iiko, R-keeper',
-    sec:'products', level:'products', ini:'МТ',
-    photoFile:'Manyurov Timur.png' },
-  { name:'Timur Burxanov',
-    role:'Начальник отдела развития кассовых решений',
-    desc:'Развитие и сопровождение виртуальной кассы, онлайн-ККМ',
-    sec:'products', level:'products', ini:'БТ',
-    photoFile:'Burxanov Timur.png' },
-  { name:'Abdusamadxon Maxmudov',
-    role:'Начальник отдела развития эквайринга',
-    desc:'Развитие интернет-эквайринга, подключение партнёров',
-    sec:'products', level:'products', ini:'МА',
-    photoFile:'Maxmudov Abdusamadxon.png' },
-  { name:'Azamat Rakhmatullayev',
-    role:'Начальник отдела развития партнерской сети',
-    desc:'Работа с крупными партнерами и сетями, включая АЗС, аптеки и др.',
-    sec:'products', level:'products', ini:'АР',
-    photoFile:null },
-  { name:'Humoyun Bahriddinov',
-    role:'Продуктолог',
-    desc:'Работа с банками и крупными партнёрами',
-    sec:'products', level:'products', ini:'БХ',
-    photoFile:'Bahriddinov Humoyun.png' },
-  { name:'Tolibjon Mirzakulov',
-    role:'Директор ООО «MULTIBROKER»',
-    desc:'Развитие инвестиционного сервиса Jett.uz',
-    sec:'products', level:'products', ini:'МТ',
-    photoFile:'Tolibjon Mirzakulov.png' },
-
-  /* АДМИНИСТРАТИВНОЕ ОБЕСПЕЧЕНИЕ */
-  { name:'Botir Tursunov',
-    role:'Управляющий делами',
-    desc:'Административно-хозяйственное обеспечение, организация офиса',
-    sec:'admin', level:'admin', ini:'ТБ',
-    photoFile:'Tursunov Botir Baxtiyorovich.png' },
-  { name:'Karina Maletina',
-    role:'Офис-менеджер',
-    desc:'Встреча гостей, сканирование и копирование документов, организационная поддержка офиса',
-    sec:'admin', level:'admin', ini:'МК',
-    photoFile:'Maletina Karina.png' },
+/* ── Плитки частых вопросов (адрес — по id, не по фамилии) ─ */
+const FAQ = [
+  { ico:'🪪', q:'Нужен пропуск',      a:'Офис-менеджер, АХО',           to:'sevara-tashmatova' },
+  { ico:'✉️', q:'Не работает почта',  a:'IT, внутренние системы',       to:'andrey-sidorov'    },
+  { ico:'📄', q:'Вопрос по договору', a:'Юридический отдел',            to:'rustam-zakirov'    },
+  { ico:'👥', q:'Кадровый вопрос',    a:'Кадровое администрирование',   to:'dinara-tugusheva'  },
 ];
 
-/* ── COMPANIES ──────────────────────────────────────────── */
-const COMPANIES = [
-  { abbr:'MC', name:'АО «MULTICARD PAYMENT»', type:'Платёжная организация',
-    color:'#E8392A', bg:'#FFF0EE',
-    desc:'Осуществляет деятельность в сфере платёжных сервисов, приёма и обработки платежей, взаимодействия с банками, партнёрами и мерчантами.' },
-  { abbr:'RT', name:'ООО «RAHMAT TECH»', type:'IT-компания группы',
-    color:'#2563EB', bg:'#EEF2FF',
-    desc:'Обеспечивает разработку, внедрение, сопровождение и развитие IT-процессов и программных решений для АО «MULTICARD PAYMENT».' },
-  { abbr:'FP', name:'ООО «FINTECH PLATFORMS»', type:'Инфраструктурная компания группы',
-    color:'#059669', bg:'#ECFDF5',
-    desc:'Обслуживает серверную инфраструктуру, необходимую для стабильной работы IT-систем и сервисов АО «MULTICARD PAYMENT».' },
-  { abbr:'MF', name:'ООО МФО «MULTIFINANCE»', type:'Микрофинансовая организация',
-    color:'#7C3AED', bg:'#F5F3FF',
-    desc:'Развивает кредитные и микрофинансовые продукты в рамках группы компаний RAHMAT.' },
-  { abbr:'MB', name:'ООО «MULTIBROKER»', type:'IT-компания группы',
-    color:'#D97706', bg:'#FFFBEB',
-    desc:'Развивает инвестиционный сервис Jett.uz' },
-];
-
-/* ── LEVEL CONFIG ───────────────────────────────────────── */
-const LV = {
-  strategic:{ c:'#E8392A', bg:'#FFF0EE', label:'Управление' },
-  it:       { c:'#2563EB', bg:'#EEF2FF', label:'IT / ИБ' },
-  finance:  { c:'#059669', bg:'#ECFDF5', label:'Финансы' },
-  control:  { c:'#7C3AED', bg:'#F5F3FF', label:'Контроль / HR' },
-  commerce: { c:'#D97706', bg:'#FFFBEB', label:'Коммерция' },
-  products: { c:'#DB2777', bg:'#FDF2F8', label:'Продукты' },
-  admin:    { c:'#6B7280', bg:'#F9FAFB', label:'АХО' },
-};
-
-/* ── SECTION ICONS ──────────────────────────────────────── */
-const SI = {
-  strategic:`<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>`,
-  it:       `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 15h2M2 9h2M20 15h2M20 9h2"/><rect x="4" y="4" width="16" height="16" rx="2"/></svg>`,
-  finance:  `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>`,
-  control:  `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-  commerce: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>`,
-  products: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
-  admin:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>`,
-};
-
-/* ── PHOTO POSITION (ratio-based, with posOverride support) ─ */
-function applyPhotoPos(img) {
-  if (img.dataset.posOverride) {
-    img.style.objectPosition = img.dataset.posOverride;
-    if (img.dataset.contain) img.style.objectFit = 'contain';
-    return;
-  }
-  const r = img.naturalWidth / img.naturalHeight;
-  if (r < 0.8)      img.style.objectPosition = 'center 15%';
-  else if (r > 1.2) img.style.objectPosition = 'center 30%';
-  else               img.style.objectPosition = 'center 20%';
+/* ── Фото: кадрирование как в исходном справочнике ──────── */
+function photoNode(p){
+  if(!p.photoFile) return '<div class="card-ini">'+p.ini+'</div>';
+  const pos = p.posOverride || 'center 20%';
+  const fit = p.photoContain ? 'contain' : 'cover';
+  const bg  = p.photoBg ? ';background:'+p.photoBg : '';
+  return '<img src="../photos/'+encodeURIComponent(p.photoFile)+'" alt="'+p.name+'"'
+    + ' style="object-position:'+pos+';object-fit:'+fit+bg+'"'
+    + ' onerror="this.style.display=\'none\';this.parentElement.querySelector(\'.card-ini\').style.display=\'flex\'">'
+    + '<div class="card-ini" style="display:none">'+p.ini+'</div>';
+}
+function avNode(p){
+  if(!p.photoFile) return p.ini;
+  const pos = p.posOverride || 'center 20%';
+  return '<img src="../photos/'+encodeURIComponent(p.photoFile)+'" alt="'+p.name+'"'
+    + ' style="object-position:'+pos+'"'
+    + ' onerror="this.replaceWith(document.createTextNode(\''+p.ini+'\'))">';
 }
 
-/* handles images already loaded from cache */
-function initPhotoPositions() {
-  document.querySelectorAll('.card-photo img').forEach(img => {
-    if (img.complete && img.naturalWidth) applyPhotoPos(img);
+/* ── СХЕМА ──────────────────────────────────────────────── */
+function schemaCard(p, cls){
+  return '<div class="pc '+(cls||'')+'" style="--c:'+BLOCKS[p.block].color+'">'
+    + '<div class="pc-av">'+avNode(p)+'</div>'
+    + '<div class="pc-meta"><div class="pc-name">'+p.name+'</div><div class="pc-role">'+p.role+'</div></div>'
+    + '</div>';
+}
+function renderSchema(){
+  const leader = PEOPLE.find(p => p.companyLead);
+  let html = '<div class="schema-leader-wrap">'+schemaCard(leader,'pc-leader')+'</div>'
+           + '<div class="schema-stem"></div><div class="schema-blocks">';
+
+  BLOCK_ORDER.forEach(key => {
+    let members = PEOPLE.filter(p => p.block === key && !p.companyLead);
+    const head = members.find(p => p.leads === key) || null;
+    const rest = members.filter(p => p !== head);
+    if(!members.length) return;
+    html += '<section class="sb collapsed" data-block="'+key+'" style="--c:'+BLOCKS[key].color+'">'
+      + '<button class="sb-cap" type="button"><span class="dot"></span>'+BLOCKS[key].label
+      + '<span class="sb-count">'+members.length+'</span>'
+      + '<svg class="sb-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>'
+      + '</button><div class="sb-body">';
+    if(head){
+      html += schemaCard(head,'pc-head') + '<div class="sb-connect"></div>';
+    }
+    html += '<div class="sb-list">' + rest.map(p => schemaCard(p)).join('') + '</div>';
+    html += '</div></section>';
+  });
+  html += '</div>';
+  document.getElementById('view-schema').innerHTML = html;
+  wireAccordion();
+}
+
+/* Аккордеон только на мобильном; на десктопе всё раскрыто. */
+let mq = window.matchMedia('(max-width:768px)');
+function wireAccordion(){
+  const blocks = [...document.querySelectorAll('.sb')];
+  blocks.forEach(sb => {
+    const cap = sb.querySelector('.sb-cap');
+    cap.onclick = () => { if(mq.matches) sb.classList.toggle('collapsed'); };
+    sb.classList.toggle('collapsed', mq.matches); // моб: свёрнуто, десктоп: раскрыто
   });
 }
+mq.addEventListener('change', () => {
+  document.querySelectorAll('.sb').forEach(sb => sb.classList.toggle('collapsed', mq.matches));
+});
 
-/* ── RENDER CARD ────────────────────────────────────────── */
-let cardIdx = 0;
+/* ── ЛЮДИ ───────────────────────────────────────────────── */
+let state = { block:'all', query:'', focus:null };
 
-function card(emp) {
-  const lv    = LV[emp.level] || LV.admin;
-  const delay = (cardIdx++ * 40) + 'ms';
+function renderChips(){
+  let html = '<button class="chip" data-block="all" aria-pressed="true" onclick="setBlock(\'all\')">Все</button>';
+  BLOCK_ORDER.forEach(key => {
+    html += '<button class="chip" data-block="'+key+'" aria-pressed="false" style="--c:'+BLOCKS[key].color+'" onclick="setBlock(\''+key+'\')">'
+      + '<span class="dot"></span>'+BLOCKS[key].label+'</button>';
+  });
+  document.getElementById('chips').innerHTML = html;
+}
+function peopleCard(p){
+  const contacts = [];
+  if(p.tg)    contacts.push('<a href="https://t.me/'+p.tg.replace(/^@/,'')+'" target="_blank" rel="noopener">'+p.tg+'</a>');
+  if(p.phone) contacts.push('<a href="tel:'+p.phone.replace(/[^+\d]/g,'')+'">'+p.phone+'</a>');
+  const cc = contacts.length ? '<div class="card-contacts">'+contacts.join('')+'</div>' : '';
+  const desc = p.desc ? '<div class="card-desc">'+p.desc+'</div>' : '';
+  return '<article class="card" style="--c:'+BLOCKS[p.block].color+'">'
+    + '<div class="card-photo">'+photoNode(p)+'</div>'
+    + '<div class="card-body">'
+    +   '<span class="card-badge">'+BLOCKS[p.block].label+'</span>'
+    +   '<div class="card-name">'+p.name+'</div>'
+    +   '<div class="card-role">'+p.role+'</div>'
+    +   desc + cc
+    + '</div></article>';
+}
+function matches(p){
+  const q = state.query;
+  if(!q) return true;
+  return (p.name+' '+p.nameLat+' '+p.role+' '+p.desc).toLowerCase().includes(q);
+}
+function renderPeople(){
+  const box = document.getElementById('people-list');
+  const banner = document.getElementById('focus-banner');
 
-  const posAttr     = emp.posOverride  ? ` data-pos-override="${emp.posOverride}"` : '';
-  const containAttr = emp.photoContain ? ' data-contain="1"' : '';
-  const photoBlock = emp.photoFile
-    ? `<img src="../photos/${encodeURIComponent(emp.photoFile)}" alt="${emp.name}"
-           onload="applyPhotoPos(this)"${posAttr}${containAttr}
-           onerror="this.style.display='none';this.parentElement.querySelector('.initials').style.display='flex'">
-       <div class="initials" style="display:none">${emp.ini}</div>`
-    : `<div class="initials">${emp.ini}</div>`;
+  if(state.focus){
+    const p = byId(state.focus);
+    banner.classList.add('on');
+    document.getElementById('focus-text').innerHTML = 'Показан ответственный: <b>'+p.name+'</b>';
+    box.innerHTML = '<div class="cards">'+peopleCard(p)+'</div>';
+    return;
+  }
+  banner.classList.remove('on');
 
-  const photoBgStyle = emp.photoBg ? ` style="background:${emp.photoBg}"` : '';
-  const desc = emp.desc ? `<p class="card-desc">${emp.desc}</p>` : '';
-
-  return `<article class="card"
-  style="--strip:${lv.c};--strip-bg:${lv.bg};animation-delay:${delay}"
-  data-q="${(emp.name + ' ' + emp.role).toLowerCase()}">
-  <div class="card-photo"${photoBgStyle}>${photoBlock}</div>
-  <div class="card-body">
-    <span class="card-badge">${lv.label}</span>
-    <div class="card-name">${emp.name}</div>
-    <div class="card-role">${emp.role}</div>
-    ${desc}
-  </div>
-</article>`;
+  let html = '';
+  BLOCK_ORDER.forEach(key => {
+    if(state.block !== 'all' && state.block !== key) return;
+    const list = PEOPLE.filter(p => p.block === key && matches(p));
+    if(!list.length) return;
+    html += '<section class="sec">'
+      + '<div class="sec-hdr" style="--c:'+BLOCKS[key].color+'"><span class="dot"></span>'
+      + '<span class="lbl">'+BLOCKS[key].label+'</span><span class="cnt">'+list.length+'</span><span class="line"></span></div>'
+      + '<div class="cards">'+list.map(peopleCard).join('')+'</div></section>';
+  });
+  box.innerHTML = html || '<div class="empty">Никого не нашлось по запросу «'+state.query+'»</div>';
 }
 
-/* ── RENDER SECTION ─────────────────────────────────────── */
-function sec(label, icon, lv, emps, gridCls) {
-  if (!emps.length) return '';
-  return `<section class="sec">
-  <div class="sec-hdr">
-    <div class="sec-icon" style="background:${lv.bg};color:${lv.c}">${icon}</div>
-    <span class="sec-label">${label}</span>
-    <span class="sec-count">${emps.length}</span>
-    <div class="sec-line"></div>
-  </div>
-  <div class="${gridCls}">${emps.map(e => card(e)).join('')}</div>
-</section>`;
+/* ── управление состоянием ──────────────────────────────── */
+function setMode(m){
+  document.querySelectorAll('.mode-btn').forEach(b => b.setAttribute('aria-pressed', b.dataset.mode===m));
+  document.getElementById('view-schema').classList.toggle('is-hidden', m!=='schema');
+  document.getElementById('view-people').classList.toggle('is-hidden', m!=='people');
+}
+function setBlock(key){
+  state.block = key; state.focus = null;
+  document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.block===key));
+  renderPeople();
+}
+function clearFocus(){
+  state.focus = null; state.query = '';
+  document.getElementById('srch').value = '';
+  setBlock('all');
+}
+function focusPerson(id){
+  state.focus = id; state.query=''; state.block='all';
+  document.getElementById('srch').value='';
+  document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.block==='all'));
+  setMode('people');
+  renderPeople();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* ── RENDER COMPANIES ───────────────────────────────────── */
-function renderCompanies() {
-  document.getElementById('co-grid').innerHTML = COMPANIES.map(co =>
-    `<div class="co-card" style="--co-color:${co.color};--co-bg:${co.bg}">
-      <div class="co-logo">${co.abbr}</div>
-      <div class="co-name">${co.name}</div>
-      <div class="co-type">${co.type}</div>
-      <div class="co-divider"></div>
-      <div class="co-desc">${co.desc}</div>
-    </div>`
+/* ── FAQ ────────────────────────────────────────────────── */
+function renderFAQ(){
+  document.getElementById('faq').innerHTML = FAQ.map(f =>
+    '<button class="faq-tile" type="button" onclick="focusPerson(\''+f.to+'\')">'
+    + '<span class="ico">'+f.ico+'</span><span class="q">'+f.q+'</span><span class="a">'+f.a+'</span></button>'
   ).join('');
 }
 
-/* ── TAB SWITCH ─────────────────────────────────────────── */
-function switchTab(tab) {
-  document.querySelectorAll('.tab').forEach(t =>
-    t.classList.toggle('tab-active', t.dataset.tab === tab));
-  const isOrg = tab === 'org';
-  document.getElementById('app').style.display      = isOrg ? '' : 'none';
-  document.getElementById('about').classList.toggle('active', !isOrg);
-  document.getElementById('srch-row').style.display = isOrg ? '' : 'none';
-}
-
-/* ── RENDER ORG ─────────────────────────────────────────── */
-function render(q) {
-  cardIdx = 0;
-  const app   = document.getElementById('app');
-  const query = (q || '').trim().toLowerCase();
-  const list  = query
-    ? E.filter(e => (e.name + ' ' + e.role).toLowerCase().includes(query))
-    : E;
-
-  if (query && !list.length) {
-    app.innerHTML = `<div class="empty">Ничего не найдено по запросу «${q}»</div>`;
-    document.getElementById('srch-badge').textContent = '0';
-    return;
-  }
-
-  const g = s => list.filter(e => e.sec === s);
-  app.innerHTML = [
-    sec('Стратегическое управление',          SI.strategic, LV.strategic, g('strategic'), 'gs'),
-    sec('IT · Технический блок · ИБ',         SI.it,        LV.it,        g('it'),        'g2'),
-    sec('Финансы',                               SI.finance,   LV.finance,   g('finance'),   'g2'),
-    sec('Контроль · Юридический блок · HR',   SI.control,   LV.control,   g('control'),   'g2'),
-    sec('Коммерция · Продажи · Операционный', SI.commerce,  LV.commerce,  g('commerce'),  'g2'),
-    sec('Продуктовые направления',             SI.products,  LV.products,  g('products'),  'g2'),
-    sec('Административное обеспечение',        SI.admin,     LV.admin,     g('admin'),     'g2'),
-  ].join('');
-
-  document.getElementById('srch-badge').textContent = query ? `${list.length} из ${E.length}` : '';
-  initPhotoPositions();
-}
-
-/* ── SEARCH ─────────────────────────────────────────────── */
-let timer;
-document.getElementById('srch').addEventListener('input', function () {
-  clearTimeout(timer);
-  timer = setTimeout(() => render(this.value), 100);
+/* ── init ───────────────────────────────────────────────── */
+document.getElementById('srch').addEventListener('input', function(){
+  state.query = this.value.trim().toLowerCase();
+  state.focus = null;
+  renderPeople();
 });
-
-/* ── INIT ───────────────────────────────────────────────── */
-document.getElementById('yr').textContent = new Date().getFullYear();
-render();
-renderCompanies();
+renderFAQ();
+renderChips();
+renderSchema();
+renderPeople();
 </script>
 </body>
 </html>

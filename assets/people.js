@@ -141,11 +141,10 @@ window.PEOPLE = [
     block:'commerce', type:'staff', ini:'ПС',
     photoFile:'Pazilov Sardor.png', tg:'@arkenakasaki', phone:'+998 91 130 03 66' },
   { name:'Шоназаров Аброржон', nameLat:'Abrorjon Shonazarov',
-    role:'',
-    desc:'Коммерческий блок: операционное направление и продажи',
+    role:'Начальник коммерческого управления',
+    desc:'Операционное направление и продажи коммерческого блока',
     block:'commerce', type:'staff', ini:'ША',
-    photoFile:null,
-    needsReview:true, review:'нет точной должности — уточнить' },
+    photoFile:null },
   { name:'Кагай Луиза', nameLat:'Luiza Kagay',
     role:'Старший специалист по подключению',
     desc:'Подключение партнёров, сопровождение процессов подключения',
@@ -207,3 +206,10 @@ window.PEOPLE = [
     photoFile:null },
 
 ];
+
+/* Стабильный уникальный id из латинского написания (уникально для каждого).
+   Люди НИГДЕ не матчатся по фамилии — только по id. Два Векслера получают
+   разные id: 'aleksandr-veksler' и 'veksler-viktor'. */
+window.PEOPLE.forEach(function(p){
+  if(!p.id) p.id = p.nameLat.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+});
