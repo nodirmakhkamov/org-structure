@@ -83,6 +83,11 @@ window.PEOPLE = [
     desc:'Руководство командой, координация задач',
     block:'it', type:'staff', ini:'ВА',
     photoFile:'VEKSLER ALEKSANDR ALEKSANDROVICH.jpg', posOverride:'center 40%' },
+  { name:'Тигай Павел', nameLat:'Pavel Tigay',
+    role:'Системный администратор',
+    desc:'Системное администрирование, почта и доступы сотрудников',
+    block:'it', type:'staff', ini:'ТП',
+    photoFile:null, tg:'@p_tigay', phone:'+998903513560' },
 
   /* ── Финансы ────────────────────────────────────────────── */
   { name:'Шоикромов Шорасул', nameLat:'Shorasul Shoikromov',

@@ -43,7 +43,7 @@ body{background:var(--mist);color:var(--ink)}
 .oc-card.lv-consult::before{background:var(--blk-commerce)}
 /* руководитель компании выделен красной рамкой */
 .oc-card.lv-director{border-color:var(--blk-manage);border-width:1.5px}
-.oc-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;font-family:var(--mono)}
+.oc-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;font-family:var(--mono);overflow:hidden}
 .oc-avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center top}
 .av-director{background:#FEE9E8;color:#B0201B}
 .av-csuite{background:#E7EEFF;color:#1B3D9B}
@@ -88,383 +88,84 @@ body{background:var(--mist);color:var(--ink)}
 
   <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Организационная структура руководства компании</h2>
 
-  <div class="oc-wrap">
-
-    <!-- DIRECTOR -->
-    <div style="padding:0 40px;margin-bottom:0">
-      <div class="oc-card lv-director" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-director"><img src="../photos/Idiyev Ilxom Aminovich.png" alt="Idiyev Ilxom Aminovich"></div>
-          <div>
-            <div class="oc-name">Idiyev Ilxom Aminovich</div>
-            <div class="oc-role">Директор</div>
-            <div class="oc-dept">Исполнительное руководство</div>
-          </div>
-        </div>
-        <div class="oc-desc">Генеральное управление компанией, стратегическое планирование и развитие</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-brand-telegram" aria-hidden="true"></i>@idv2601</div>
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 90 990 39 29</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-    </div>
-
-    <div class="oc-connector"></div>
-
-    <!-- C-SUITE -->
-    <div class="oc-section-label">Топ-менеджмент</div>
-    <div class="oc-grid-3" style="margin-bottom:8px">
-      <div class="oc-card lv-csuite" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-csuite">SS</div>
-          <div>
-            <div class="oc-name">Shoikromov Shorasul</div>
-            <div class="oc-role">Финансовый директор</div>
-          </div>
-        </div>
-        <div class="oc-desc">Финансовое планирование, управление бюджетом и инвестиционная политика</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 90 933 77 79</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-      <div class="oc-card lv-csuite" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-csuite"><img src="../photos/Orlovskiy Aleksey.png" alt="Orlovskiy Aleksey"></div>
-          <div>
-            <div class="oc-name">Orlovskiy Aleksey</div>
-            <div class="oc-role">Технический директор</div>
-          </div>
-        </div>
-        <div class="oc-desc">Техническая стратегия, архитектура продуктов и управление разработкой</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-brand-telegram" aria-hidden="true"></i>@OrlovskiyAlekseyUZ</div>
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 50 505 23 31</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-      <div class="oc-card lv-csuite" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-csuite">MD</div>
-          <div>
-            <div class="oc-name">Muminov Dmitriy</div>
-            <div class="oc-role">Директор по информационной безопасности</div>
-          </div>
-        </div>
-        <div class="oc-desc">Обеспечение ИБ, киберзащита и соответствие требованиям безопасности</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row" style="color:var(--color-text-tertiary);font-style:italic">Контакты не указаны</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-    </div>
-
-    <!-- Chief accountant under CFO -->
-    <div class="oc-sub-row" style="margin-left:calc(33% / 2 - 12px + 14px);max-width:calc(33% - 8px)">
-      <div class="oc-card lv-admin" style="flex:1" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-admin" style="width:28px;height:28px;font-size:10px">IM</div>
-          <div>
-            <div class="oc-name" style="font-size:12px">Ismailova Mukarram</div>
-            <div class="oc-role">Главный бухгалтер</div>
-          </div>
-        </div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 90 980 43 16</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-    </div>
-
-    <div style="height:20px"></div>
-
-    <!-- CONSULTANTS -->
-    <div class="oc-section-label">Консультационный отдел</div>
-    <div class="oc-grid-auto" style="margin-bottom:20px">
-
-      <div class="oc-card lv-consult" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-consult">БА</div>
-          <div>
-            <div class="oc-name">Bozorov Alisher</div>
-            <div class="oc-role">Консультант директора</div>
-            <div class="oc-dept">по финансовым вопросам</div>
-          </div>
-        </div>
-        <div class="oc-desc">Финансовый советник директора</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row" style="color:var(--color-text-tertiary);font-style:italic">Контакты не указаны</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-
-      <div class="oc-card lv-consult" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-consult"><img src="../photos/Marking Yevgeniy.png" alt="Marking Yevgeniy"></div>
-          <div>
-            <div class="oc-name">Marking Yevgeniy</div>
-            <div class="oc-role">Консультант по ИТ</div>
-            <div class="oc-dept">и информационной безопасности</div>
-          </div>
-        </div>
-        <div class="oc-desc">Экспертиза в области информационных технологий и кибербезопасности</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-brand-telegram" aria-hidden="true"></i>@em85g</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-
-      <div class="oc-card lv-consult" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-consult"><img src="../photos/Turaxanov Sanjar.png" alt="Turaxanov Sanjar"></div>
-          <div>
-            <div class="oc-name">Turaxanov Sanjar</div>
-            <div class="oc-role">Консультант</div>
-            <div class="oc-dept">по кредитным вопросам</div>
-          </div>
-        </div>
-        <div class="oc-desc">Экспертная поддержка по кредитным продуктам и структурированию</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-brand-telegram" aria-hidden="true"></i>@agapit</div>
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 99 951 11 11</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-
-      <div class="oc-card lv-consult" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-consult"><img src="../photos/Veksler Viktor.png" alt="Veksler Viktor"></div>
-          <div>
-            <div class="oc-name">Veksler Viktor</div>
-            <div class="oc-role">Консультант</div>
-            <div class="oc-dept">по кассовым направлениям</div>
-          </div>
-        </div>
-        <div class="oc-desc">Консультации по кассовым направлениям и операционным вопросам</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-brand-telegram" aria-hidden="true"></i>@viktor_veksler</div>
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 90 370 92 72</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-
-      <div class="oc-card lv-consult" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-consult">ХХ</div>
-          <div>
-            <div class="oc-name">Xodjiyev Xurshed</div>
-            <div class="oc-role">Консультант</div>
-            <div class="oc-dept">по привлечению партнёров</div>
-          </div>
-        </div>
-        <div class="oc-desc">Развитие партнёрской сети и привлечение новых партнёров</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row" style="color:var(--color-text-tertiary);font-style:italic">Контакты не указаны</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-
-      <div class="oc-card lv-consult" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-consult">ЯД</div>
-          <div>
-            <div class="oc-name">Yagunov Dmitriy</div>
-            <div class="oc-role">Консультант</div>
-            <div class="oc-dept">по привлечению партнёров</div>
-          </div>
-        </div>
-        <div class="oc-desc">Развитие партнёрской сети и привлечение новых партнёров</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row" style="color:var(--color-text-tertiary);font-style:italic">Контакты не указаны</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-
-      <div class="oc-card lv-consult" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-consult">ИЭ</div>
-          <div>
-            <div class="oc-name">Idiyev Erkin</div>
-            <div class="oc-role">Консультант</div>
-            <div class="oc-dept">Консультационный отдел</div>
-          </div>
-        </div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row" style="color:var(--color-text-tertiary);font-style:italic">Контакты не указаны</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-
-      <div class="oc-card lv-consult" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-consult">ЗУ</div>
-          <div>
-            <div class="oc-name">Zakirova Umida</div>
-            <div class="oc-role">Консультант</div>
-            <div class="oc-dept">Консультационный отдел</div>
-          </div>
-        </div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row" style="color:var(--color-text-tertiary);font-style:italic">Контакты не указаны</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-
-    </div>
-
-    <!-- ADMIN -->
-    <div class="oc-section-label">Административно-хозяйственное управление</div>
-    <div class="oc-grid-2" style="margin-bottom:20px">
-      <div class="oc-card lv-admin" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-admin"><img src="../photos/Tursunov Botir Baxtiyorovich.png" alt="Tursunov Botir Baxtiyorovich"></div>
-          <div>
-            <div class="oc-name">Tursunov Botir Baxtiyorovich</div>
-            <div class="oc-role">Управляющий делами</div>
-            <div class="oc-dept">Административно-хозяйственный отдел</div>
-          </div>
-        </div>
-        <div class="oc-desc">Административно-хозяйственное обеспечение деятельности компании</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 33 847 11 11</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-    </div>
-
-    <!-- DEPT HEADS -->
-    <div class="oc-section-label">Руководители отделов</div>
-    <div class="oc-grid-auto">
-      <div class="oc-card lv-head" onclick="toggle(this)">
-        <div class="oc-top"><div class="oc-avatar av-head"><img src="../photos/Zinovev Konstantin.png" alt="Zinovev Konstantin"></div><div>
-          <div class="oc-name">Zinovev Konstantin</div>
-          <div class="oc-role">Начальник</div>
-          <div class="oc-dept">Операционный отдел</div>
-        </div></div>
-        <div class="oc-desc">Операционная деятельность, контакт-центр и сервис поддержки</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-brand-telegram" aria-hidden="true"></i>@konstantinZ1981</div>
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 91 791 22 88</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-      <div class="oc-card lv-head" onclick="toggle(this)">
-        <div class="oc-top"><div class="oc-avatar av-head"><img src="../photos/Pazilov Sardor.png" alt="Pazilov Sardor"></div><div>
-          <div class="oc-name">Pazilov Sardor</div>
-          <div class="oc-role">Начальник</div>
-          <div class="oc-dept">Отдел маркетинга</div>
-        </div></div>
-        <div class="oc-desc">Маркетинговая стратегия, продвижение и управление брендом</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-brand-telegram" aria-hidden="true"></i>@arkenakasaki</div>
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 91 130 03 66</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-      <div class="oc-card lv-head" onclick="toggle(this)">
-        <div class="oc-top"><div class="oc-avatar av-head">БТ</div><div>
-          <div class="oc-name">Burxanov Timur</div>
-          <div class="oc-role">Начальник</div>
-          <div class="oc-dept">Отд. кассовых решений</div>
-        </div></div>
-        <div class="oc-desc">Развитие кассовых технологий и продуктов</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-brand-telegram" aria-hidden="true"></i>@ne_privlekatelnyy</div>
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 90 560 14 49</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-      <div class="oc-card lv-head" onclick="toggle(this)">
-        <div class="oc-top"><div class="oc-avatar av-head">АЭ</div><div>
-          <div class="oc-name">Aglyamova Elvira</div>
-          <div class="oc-role">Начальник</div>
-          <div class="oc-dept">Отд. кредитных продуктов</div>
-        </div></div>
-        <div class="oc-desc">Разработка и развитие кредитных продуктов</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-brand-telegram" aria-hidden="true"></i>@Elya_Ag</div>
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 99 872 40 90</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-      <div class="oc-card lv-head" onclick="toggle(this)">
-        <div class="oc-top"><div class="oc-avatar av-head"><img src="../photos/Maxmudov Abdusamadxon.png" alt="Maxmudov Abdusamadxon"></div><div>
-          <div class="oc-name">Maxmudov Abdusamadxon</div>
-          <div class="oc-role">Начальник</div>
-          <div class="oc-dept">Отдел эквайринга</div>
-        </div></div>
-        <div class="oc-desc">Развитие эквайринговых решений и инфраструктуры</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row" style="color:var(--color-text-tertiary);font-style:italic">Контакты не указаны</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-      <div class="oc-card lv-head" onclick="toggle(this)">
-        <div class="oc-top"><div class="oc-avatar av-head">МТ</div><div>
-          <div class="oc-name">Manyurov Timur</div>
-          <div class="oc-role">Начальник</div>
-          <div class="oc-dept">Отдел развития HoReCa</div>
-        </div></div>
-        <div class="oc-desc">Развитие направления HoReCa и партнёрская сеть</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-brand-telegram" aria-hidden="true"></i>@Sk8racer</div>
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 20 007 85 75</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-      <div class="oc-card lv-head" onclick="toggle(this)">
-        <div class="oc-top"><div class="oc-avatar av-head"><img src="../photos/Nasirov Baxtiyor.png" alt="Nasirov Baxtiyor"></div><div>
-          <div class="oc-name">Nasirov Baxtiyor</div>
-          <div class="oc-role">Начальник</div>
-          <div class="oc-dept">Отдел Multidriver</div>
-        </div></div>
-        <div class="oc-desc">Развитие платформы Multidriver и интеграции</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row" style="color:var(--color-text-tertiary);font-style:italic">Контакты не указаны</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-      <div class="oc-card lv-head" onclick="toggle(this)">
-        <div class="oc-top"><div class="oc-avatar av-head"><img src="../photos/Zakirov Rustam.png" alt="Zakirov Rustam"></div><div>
-          <div class="oc-name">Zakirov Rustam</div>
-          <div class="oc-role">Начальник</div>
-          <div class="oc-dept">Юридический отдел</div>
-        </div></div>
-        <div class="oc-desc">Правовое сопровождение, договорная работа и compliance</div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-brand-telegram" aria-hidden="true"></i>@zakirov_r</div>
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 90 982 23 11</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-    </div>
-
-    <!-- Deputy -->
-    <div style="margin-top:6px;margin-left:calc(175px + 4px);position:relative">
-      <div style="position:absolute;left:-20px;top:-6px;width:1px;height:calc(100% + 12px);background:var(--color-border-secondary)"></div>
-      <div style="position:absolute;left:-20px;top:50%;width:20px;height:1px;background:var(--color-border-secondary)"></div>
-      <div class="oc-card lv-deputy" style="max-width:calc(175px - 4px)" onclick="toggle(this)">
-        <div class="oc-top">
-          <div class="oc-avatar av-deputy" style="width:28px;height:28px;font-size:10px">РТ</div>
-          <div>
-            <div class="oc-name" style="font-size:11px">Raxmatullayev To'lqinjon</div>
-            <div class="oc-role">Заместитель начальника</div>
-            <div class="oc-dept">Кассовые решения</div>
-          </div>
-        </div>
-        <div class="oc-contacts">
-          <div class="oc-contact-row"><i class="ti ti-brand-telegram" aria-hidden="true"></i>@rTulkin</div>
-          <div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>+998 97 705 42 93</div>
-        </div>
-        <div class="oc-hint">нажмите для контактов</div>
-      </div>
-    </div>
-
-  </div>
+  <!-- Карточки рендерятся из assets/people.js — встроенных данных о людях здесь нет. -->
+  <div class="oc-wrap" id="oc-wrap"></div>
 </main>
 
+<script src="../assets/people.js"></script>
 <script>
+/* ── Внутренняя схема /manage: только СТРУКТУРА (ids), данные о людях из people.js ─ */
+const byId = id => window.PEOPLE.find(p => p.id === id);
+const STRUCT = {
+  director:    'ilxom-idiyev',
+  csuite:      ['shorasul-shoikromov','aleksey-orlovskiy','dmitriy-muminov'],
+  accountant:  'mukarram-ismailova',
+  consultants: ['alisher-bozorov','marking-yevgeniy','veksler-viktor'],
+  admin:       ['botir-tursunov'],
+  heads:       ['konstantin-zinoviev','sardor-pazilov','timur-burxanov','elvira-aglyamova',
+                'abdusamadxon-maxmudov','timur-manyurov','baxtiyor-nasirov','rustam-zakirov'],
+};
+
+function avatar(p, lv, small){
+  const size = small ? ' style="width:28px;height:28px;font-size:10px"' : '';
+  const inner = p.photoFile
+    ? '<img src="../photos/'+encodeURIComponent(p.photoFile)+'" alt="'+p.name+'"'
+      + ' onerror="this.replaceWith(document.createTextNode(\''+p.ini+'\'))">'
+    : p.ini;
+  return '<div class="oc-avatar av-'+lv+'"'+size+'>'+inner+'</div>';
+}
+function contacts(p){
+  const rows = [];
+  if(p.tg)    rows.push('<div class="oc-contact-row"><i class="ti ti-brand-telegram" aria-hidden="true"></i>'+p.tg+'</div>');
+  if(p.phone) rows.push('<div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>'+p.phone+'</div>');
+  if(!rows.length) rows.push('<div class="oc-contact-row" style="color:var(--color-text-tertiary);font-style:italic">Контакты не указаны</div>');
+  return '<div class="oc-contacts">'+rows.join('')+'</div>';
+}
+function card(id, lv, opts){
+  opts = opts || {};
+  const p = byId(id);
+  if(!p) return '';                         // удалённого человека молча пропускаем
+  const role = p.roleInternal || p.role;    // на /manage приоритет — внутренняя формулировка
+  const nameStyle = opts.small ? ' style="font-size:12px"' : '';
+  const desc = (opts.desc !== false && p.desc)
+    ? '<div class="oc-desc">'+p.desc+'</div>' : '';
+  return '<div class="oc-card lv-'+lv+'"'+(opts.style ? ' style="'+opts.style+'"' : '')+' onclick="toggle(this)">'
+    + '<div class="oc-top">'+avatar(p, lv, opts.small)
+    +   '<div><div class="oc-name"'+nameStyle+'>'+p.name+'</div><div class="oc-role">'+role+'</div></div>'
+    + '</div>'
+    + desc + contacts(p)
+    + '<div class="oc-hint">нажмите для контактов</div></div>';
+}
+
+function render(){
+  let h = '';
+  // Директор
+  h += '<div style="padding:0 40px;margin-bottom:0">'+card(STRUCT.director,'director')+'</div>';
+  h += '<div class="oc-connector"></div>';
+  // Топ-менеджмент
+  h += '<div class="oc-section-label">Топ-менеджмент</div>';
+  h += '<div class="oc-grid-3" style="margin-bottom:8px">'
+     + STRUCT.csuite.map(id => card(id,'csuite')).join('') + '</div>';
+  // Главный бухгалтер под финдиректором
+  h += '<div class="oc-sub-row" style="margin-left:calc(33% / 2 - 12px + 14px);max-width:calc(33% - 8px)">'
+     + card(STRUCT.accountant,'admin',{small:true,desc:false,style:'flex:1'}) + '</div>';
+  h += '<div style="height:20px"></div>';
+  // Консультационный отдел
+  h += '<div class="oc-section-label">Консультационный отдел</div>';
+  h += '<div class="oc-grid-auto" style="margin-bottom:20px">'
+     + STRUCT.consultants.map(id => card(id,'consult')).join('') + '</div>';
+  // АХО
+  h += '<div class="oc-section-label">Административно-хозяйственное управление</div>';
+  h += '<div class="oc-grid-2" style="margin-bottom:20px">'
+     + STRUCT.admin.map(id => card(id,'admin')).join('') + '</div>';
+  // Руководители отделов
+  h += '<div class="oc-section-label">Руководители отделов</div>';
+  h += '<div class="oc-grid-auto">'
+     + STRUCT.heads.map(id => card(id,'head')).join('') + '</div>';
+  document.getElementById('oc-wrap').innerHTML = h;
+}
+render();
+
 function toggle(card){
   const c=card.querySelector('.oc-contacts');
   const h=card.querySelector('.oc-hint');
@@ -472,6 +173,7 @@ function toggle(card){
   const open=c.classList.toggle('open');
   if(h)h.textContent=open?'скрыть контакты':'нажмите для контактов';
 }
+
 /* Защита от «пустых квадратов»: активно грузим webfont Tabler, и только если
    он реально не загрузился — прячем глифы (текст контактов остаётся). */
 (function(){
