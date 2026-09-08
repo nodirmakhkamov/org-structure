@@ -1,0 +1,149 @@
+/* =========================================================================
+   Rahmat · онбординг-сайт · общая дизайн-система
+   Единственный источник токенов и общих компонентов.
+   Правка цвета/шрифта делается здесь, во всех страницах подхватывается.
+
+   Шрифты подключаются в <head> каждой страницы (preconnect + link на
+   Google Fonts), эта таблица только использует семейства.
+   ========================================================================= */
+
+:root{
+  /* — базовая палитра (из презентации) — */
+  --red:    #F43530;   /* акцент: одно-два слова в заголовке, метки          */
+  --lime:   #D9F226;   /* редкий второй акцент, надзаголовки на тёмном       */
+  --ink:    #0E0E0F;   /* тёмные секции и основной текст                     */
+  --paper:  #FFFFFF;
+  --mist:   #F4F4F4;   /* чередующийся фон светлых секций                    */
+  --line:   #E2E2E2;   /* границы карточек на светлом                        */
+  --muted:  #6E6E73;   /* вторичный текст                                    */
+
+  /* — варианты для тёмных секций — */
+  --line-dark:  #2A2A30;
+  --muted-dark: #A6A6AE;
+
+  /* — цвета блоков команды (аватарки и метки справочника) — */
+  --blk-manage:   #F43530;  /* управление  */
+  --blk-it:       #2F6BFF;  /* IT и ИБ     */
+  --blk-finance:  #12A06A;  /* финансы     */
+  --blk-control:  #7A5AF8;  /* контроль    */
+  --blk-commerce: #E8720C;  /* коммерция   */
+  --blk-products: #E01B6A;  /* продукты    */
+  --blk-adm:      #5F6470;  /* АХО         */
+
+  /* — типографика — */
+  --display:"Unbounded",system-ui,sans-serif;   /* только h1/h2            */
+  --body:"Onest",system-ui,sans-serif;          /* весь остальной текст    */
+  --mono:"JetBrains Mono",ui-monospace,monospace;/* надзаголовки, метки    */
+
+  /* — метрики — */
+  --head-h: 56px;      /* высота фиксированной шапки (≤60px по ТЗ)          */
+  --r-card: 16px;      /* базовое скругление карточек                        */
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:var(--body);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+
+/* Страницы с обычным потоком (не дека) отодвигают контент под шапку. */
+body.has-head{padding-top:var(--head-h)}
+
+/* =========================================================================
+   ОБЩАЯ ШАПКА
+   Фиксированная, полупрозрачная тёмная подложка с размытием, белый текст.
+   Читается и над белыми, и над тёмными слайдами.
+   ========================================================================= */
+.site-head{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:var(--head-h);
+  background:rgba(14,14,15,.55);
+  backdrop-filter:blur(12px) saturate(1.3);
+  -webkit-backdrop-filter:blur(12px) saturate(1.3);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.site-head__in{
+  height:100%;
+  width:min(1120px,100% - 48px);
+  margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.site-head__brand{
+  font-family:var(--display);font-weight:700;font-size:20px;
+  letter-spacing:-.03em;line-height:1;
+  color:#fff;text-decoration:none;
+  text-shadow:0 1px 4px rgba(0,0,0,.55);
+}
+.site-head__nav{display:flex;gap:6px}
+.site-head__nav a{
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.72);text-decoration:none;
+  text-shadow:0 1px 4px rgba(0,0,0,.55);
+  height:44px;padding:0 14px;                /* тап-цель ≥44px */
+  display:inline-flex;align-items:center;
+  border-radius:999px;
+  transition:color .15s ease,background .15s ease;
+}
+.site-head__nav a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.site-head__nav a[aria-current="page"]{
+  color:#fff;
+  box-shadow:inset 0 -2px 0 var(--red);
+  border-radius:0;
+}
+
+@media (max-width:480px){
+  :root{--head-h:52px}
+  .site-head__in{width:calc(100% - 28px);gap:8px}
+  .site-head__brand{font-size:17px}
+  .site-head__nav a{padding:0 10px;font-size:11px;letter-spacing:.06em}
+}
+
+/* =========================================================================
+   ОБЩИЙ ВИЗУАЛЬНЫЙ НАБОР (используется декой и страницей «Команда»)
+   Классы уникальны и не конфликтуют с существующими именами в index.html.
+   ========================================================================= */
+
+/* надзаголовок моношрифтом капсом */
+.eyebrow{
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+}
+.dark .eyebrow{color:var(--lime)}
+
+/* заголовки: ключевые слова в <em> красным, без курсива */
+.h-display{
+  font-family:var(--display);letter-spacing:-.025em;line-height:1.04;margin:0;
+}
+.h-display em{font-style:normal;color:var(--red)}
+
+/* чередующиеся фоны секций */
+.sec-paper{background:var(--paper);color:var(--ink)}
+.sec-mist {background:var(--mist);color:var(--ink)}
+.sec-dark {background:var(--ink);color:#fff}
+
+/* декоративный красный круг в углу тёмных секций */
+.deco-mark{
+  position:absolute;right:-80px;bottom:-100px;
+  width:380px;height:380px;border-radius:50%;
+  background:var(--red);opacity:.15;pointer-events:none;
+}
+
+/* карточка-бокс: скругление, граница 1px, без теней */
+.box{border:1px solid var(--line);border-radius:18px;padding:24px;background:var(--paper)}
+.dark .box{border-color:var(--line-dark);background:transparent}
+
+/* =========================================================================
+   Tabler-иконки (используются на /manage): защита от «пустых квадратов».
+   Если webfont не загрузился, страница добавляет класс .no-ticons на <html>,
+   и глифы просто скрываются — текстовые контакты остаются читаемыми.
+   ========================================================================= */
+.no-ticons .ti{display:none !important}
+
+@media print{
+  .site-head{display:none}
+  body.has-head{padding-top:0}
+}

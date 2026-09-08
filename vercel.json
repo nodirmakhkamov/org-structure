@@ -1,3 +1,8 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/org_chart_management.html", "destination": "/manage", "permanent": true },
+    { "source": "/rahmat-company-deck_2.html", "destination": "/", "permanent": true }
+  ]
 }
