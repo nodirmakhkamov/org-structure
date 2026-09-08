@@ -17,7 +17,13 @@ body{background:var(--ink);color:var(--ink);font-size:17px;line-height:1.6}
 .slide{min-height:100svh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;align-items:center;background:var(--paper);position:relative;padding:64px 0}
 .slide.dark{background:var(--ink);color:#fff}
 .inner{width:min(1120px,100% - 96px);margin:0 auto}
-@media (max-width:720px){.inner{width:calc(100% - 40px)}.slide{padding:56px 0}}
+@media (max-width:720px){
+  .inner{width:calc(100% - 40px)}
+  /* Слайд перестаёт быть жёстко-полноэкранным: тянется по контенту,
+     выравнивание сверху + отступ под шапку — ничего не обрезается. */
+  .slide{min-height:100svh;height:auto;align-items:flex-start;
+         padding:calc(var(--head-h) + 26px) 0 48px;scroll-snap-stop:normal}
+}
 
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .dark .eyebrow{color:var(--lime)}
@@ -93,6 +99,16 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .hud{position:fixed;right:22px;bottom:20px;z-index:9;font-family:var(--mono);font-size:12px;letter-spacing:.1em;background:rgba(14,14,15,.86);color:#fff;padding:9px 14px;border-radius:999px;backdrop-filter:blur(6px)}
 .hint{position:fixed;left:22px;bottom:20px;z-index:9;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8A8A92;transition:opacity .4s ease}
 .hint.gone{opacity:0}
+
+/* Мобильные переопределения типографики и сеток — в конце, чтобы
+   перекрыть базовые правила деки (порядок каскада). */
+@media (max-width:720px){
+  h1{font-size:30px}                            /* ≤34px, иначе Unbounded ломает вёрстку */
+  h2{font-size:26px}
+  .lead{font-size:17px;margin-top:18px}
+  .logos{grid-template-columns:repeat(2,1fr)}   /* логотипные стены в 2 колонки */
+  .pipeline{grid-template-columns:1fr}          /* конвейер оплаты в 1 колонку */
+}
 
 @media print{
   .deck{height:auto;overflow:visible}
