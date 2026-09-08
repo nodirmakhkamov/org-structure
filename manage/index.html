@@ -103,7 +103,8 @@ const STRUCT = {
   consultants: ['alisher-bozorov','marking-yevgeniy','veksler-viktor'],
   admin:       ['botir-tursunov'],
   heads:       ['konstantin-zinoviev','sardor-pazilov','timur-burxanov','elvira-aglyamova',
-                'abdusamadxon-maxmudov','timur-manyurov','baxtiyor-nasirov','rustam-zakirov'],
+                'abdusamadxon-maxmudov','timur-manyurov','azamat-rakhmatullayev','rustam-zakirov',
+                {dept:'Отдел развития партнёрской сети'}],  // вакантный узел: отдел есть, руководителя нет
 };
 
 function avatar(p, lv, small){
@@ -120,6 +121,14 @@ function contacts(p){
   if(p.phone) rows.push('<div class="oc-contact-row"><i class="ti ti-phone" aria-hidden="true"></i>'+p.phone+'</div>');
   if(!rows.length) rows.push('<div class="oc-contact-row" style="color:var(--color-text-tertiary);font-style:italic">Контакты не указаны</div>');
   return '<div class="oc-contacts">'+rows.join('')+'</div>';
+}
+/* Вакантный узел: отдел существует, руководителя нет. Человека не подставляем. */
+function vacantCard(dept){
+  return '<div class="oc-card lv-head">'
+    + '<div class="oc-top"><div class="oc-avatar av-head">—</div>'
+    +   '<div><div class="oc-name">'+dept+'</div>'
+    +   '<div class="oc-role" style="font-style:italic;color:var(--color-text-tertiary)">Руководитель не назначен</div></div>'
+    + '</div></div>';
 }
 function card(id, lv, opts){
   opts = opts || {};
@@ -161,7 +170,8 @@ function render(){
   // Руководители отделов
   h += '<div class="oc-section-label">Руководители отделов</div>';
   h += '<div class="oc-grid-auto">'
-     + STRUCT.heads.map(id => card(id,'head')).join('') + '</div>';
+     + STRUCT.heads.map(e => typeof e === 'string' ? card(e,'head') : vacantCard(e.dept)).join('')
+     + '</div>';
   document.getElementById('oc-wrap').innerHTML = h;
 }
 render();
