@@ -67,6 +67,7 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
 .logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:36px}
 .logo{border:1px solid var(--line);border-radius:16px;background:var(--paper);height:104px;display:grid;place-content:center;padding:18px;text-align:center}
 .logo img{max-height:46px;max-width:100%;width:auto;object-fit:contain;display:block}
+.logo img[hidden]{display:none}  /* onerror прячет битую картинку — остаётся текстовый фолбэк */
 .logo .nm{font-weight:700;font-size:17px;line-height:1.2}
 .logo .nm small{display:block;font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:7px}
 .grp{margin-top:34px}
@@ -137,7 +138,7 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
   <div class="inner">
     <div class="eyebrow">Знакомство с компанией</div>
     <h1>Мы делаем так,<br>чтобы деньги<br><em>просто доходили</em>.</h1>
-    <p class="lead">Rahmat Tech и Multicard Payment. Платёжная платформа для бизнеса в Узбекистане: касса, эквайринг, единый QR и продукты вокруг них.</p>
+    <p class="lead">Группа компаний «Rahmat». Платёжная платформа для бизнеса в Узбекистане: касса, эквайринг, единый QR, рассрочка и микрозаймы.</p>
     <a class="cta" href="/team">Открыть команду →</a>
   </div>
   <div class="mark" aria-hidden="true"></div>
@@ -149,7 +150,7 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
     <h2>Платёжная организация<br>с лицензией <em>Центрального банка</em>.</h2>
     <p class="lead">Бизнес приходит к нам, когда ему нужно принимать оплату: в магазине, в приложении, на сайте, в телеграм-боте или на кассе в кафе. Мы закрываем всю цепочку, от железа до чека в налоговой.</p>
     <div class="cols">
-      <div class="box"><div class="k">Для кого</div><h3>Бизнес любого размера</h3><p>От самозанятого с одним QR-кодом до сети АЗС и федерального ритейла.</p></div>
+      <div class="box"><div class="k">Для кого</div><h3>Бизнес любого размера</h3><p>От самозанятого с одним QR-кодом до сети АЗС и крупного ритейла.</p></div>
       <div class="box"><div class="k">Что даём</div><h3>Приём оплаты под ключ</h3><p>Терминал, онлайн-эквайринг, единый QR и отправка чеков в налоговую.</p></div>
       <div class="box"><div class="k">Как работаем</div><h3>Свои разработка и поддержка</h3><p>Продукт, интеграции и техподдержка внутри группы, а не на аутсорсе.</p></div>
     </div>
@@ -372,6 +373,30 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
         <img src="logos/nike.svg" alt="Nike" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
         <div class="nm" hidden>Nike<small>Ритейл</small></div>
       </div>
+      <div class="logo">
+        <img src="logos/uklon.svg" alt="Uklon" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+        <div class="nm" hidden>Uklon<small>Перевозки</small></div>
+      </div>
+      <div class="logo">
+        <img src="logos/yandex-go.svg" alt="Yandex Go" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+        <div class="nm" hidden>Yandex Go<small>Такси и доставка</small></div>
+      </div>
+      <div class="logo">
+        <img src="logos/domo.svg" alt="Domo" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+        <div class="nm" hidden>Domo<small>Бытовая техника</small></div>
+      </div>
+      <div class="logo">
+        <img src="logos/bon.svg" alt="Bon!" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+        <div class="nm" hidden>Bon!<small>Супермаркеты</small></div>
+      </div>
+      <div class="logo">
+        <img src="logos/di-sport.svg" alt="Di Sport" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+        <div class="nm" hidden>Di Sport<small>Спорттовары</small></div>
+      </div>
+      <div class="logo">
+        <img src="logos/ucell.svg" alt="Ucell" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+        <div class="nm" hidden>Ucell<small>Мобильная связь</small></div>
+      </div>
     </div>
   </div>
 </section>
@@ -389,20 +414,6 @@ h1 em,h2 em{font-style:normal;color:var(--red)}
       <div class="pnode"><div class="num">05</div><b>Деньги мерчанту</b><p>Бизнес получает выручку, мы получаем комиссию.</p></div>
     </div>
     <p class="qrnote"><b>Один Rahmat QR, больше пятнадцати способов оплаты.</b>За одним кодом на столе стоят банковские приложения и платёжные сервисы страны. Для гостя это один скан, для нас целый слой интеграций.</p>
-  </div>
-</section>
-
-<section class="slide dark">
-  <div class="inner">
-    <div class="eyebrow">Как устроена команда</div>
-    <h2>Пять блоков,<br>у каждого <em>свой профиль</em>.</h2>
-    <div class="rows">
-      <div class="row"><div class="lbl">Управление</div><div><h4>Идиев Ильхом, Муталов Аваз, Бозоров Алишер</h4><p>Стратегия группы и управление компаниями.</p></div></div>
-      <div class="row"><div class="lbl">IT и ИБ</div><div><h4>Маркинг Евгений</h4><p>Разработка, инфраструктура и информационная безопасность.</p></div></div>
-      <div class="row"><div class="lbl">Финансы</div><div><h4>Шоикромов Шорасул</h4><p>Финансовое управление группы и МФО.</p></div></div>
-      <div class="row"><div class="lbl">Контроль</div><div><h4>Закиров Рустам</h4><p>Право и HR.</p></div></div>
-      <div class="row"><div class="lbl">Коммерция</div><div><h4>Векслер Виктор</h4><p>Продажи, операционный отдел, маркетинг и контакт-центр.</p></div></div>
-    </div>
   </div>
 </section>
 
