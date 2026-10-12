@@ -22,7 +22,7 @@
    ========================================================================= */
 
 window.BLOCKS = {
-  manage:   { label: 'Управление',   color: 'var(--blk-manage)'  },
+  manage:   { label: 'Стратегия / Совет', color: 'var(--blk-manage)'  },
   it:       { label: 'IT и ИБ',      color: 'var(--blk-it)'      },
   finance:  { label: 'Финансы',      color: 'var(--blk-finance)' },
   control:  { label: 'Контроль и HR',color: 'var(--blk-control)' },
@@ -33,7 +33,7 @@ window.BLOCKS = {
 
 window.PEOPLE = [
 
-  /* ── Управление ─────────────────────────────────────────── */
+  /* ── Стратегия / Совет ──────────────────────────────────── */
   { name:'Идиев Ильхом', nameLat:'Ilxom Idiyev',
     role:'Председатель Набсовета АО «MULTICARD PAYMENT» / Директор ООО «RAHMAT TECH»',
     desc:'Стратегическое развитие и общее управление группы компаний',
@@ -196,11 +196,10 @@ window.PEOPLE = [
     block:'products', type:'staff', ini:'БХ',
     photoFile:'Bahriddinov Humoyun.png' },
   { name:'Турдиев Азамат', nameLat:'Azamat Turdiyev',
-    role:'',
+    role:'Продуктолог',
     desc:'',
     block:'products', type:'staff', ini:'ТА',
-    photoFile:null,
-    needsReview:true, review:'должность будет прислана отдельно' },
+    photoFile:null },
 
   /* ── АХО ────────────────────────────────────────────────── */
   { name:'Турсунов Ботир', nameLat:'Botir Tursunov',
